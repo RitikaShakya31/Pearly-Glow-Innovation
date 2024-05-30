@@ -15,6 +15,10 @@ class Home extends CI_Controller
             }
         }
         $data['contact'] = $this->CommonModal->getAllRows('setting');
+        $data['testimonial'] = $this->CommonModal->getAllRowsInOrderWithLimit('testimonial', '2', 'id', 'DESC');
+        // echo '<pre>';
+        // print_r($data['testimonial']);
+        // exit();
         $data['cate'] = $this->CommonModal->getAllRowsInOrderWithLimit('category', '25', 'category_id', 'ASC');
         $this->load->view('includes/header-link', $data);
         $this->load->view('includes/header');

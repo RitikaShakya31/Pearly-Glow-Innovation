@@ -60,10 +60,47 @@ class AdminHome extends CI_Controller
 				flashMultiData(['success_status' => "error", 'msg' => "Something Went Wrong."]);
 			}
 		 
-			redirect('gallery');
+			redirect('gallery_list');
 			exit;
 		}
 		$this->load->view('admin/gallery', $data);
+	}
+     public function testimonial_list()
+	{
+		$data['testimonial'] = $this->CommonModal->getAllRowsInOrder('testimonial', 'id', 'DESC');
+		$data['title'] = 'Testimonial ';
+		$BdID = $this->input->get('BdID');
+		if (decryptId($BdID) != '') {
+			$delete = $this->CommonModal->deleteRowById('testimonial', array('id' => decryptId($BdID)));
+			if ($delete) {
+				flashMultiData(['success_status' => "success", 'msg' => "Testimonial Deleted"]);
+			} else {
+				flashMultiData(['success_status' => "error", 'msg' => "Something Went Wrong."]);
+			}
+		 
+			redirect('testimonial-list');
+			exit;
+		}
+		$this->load->view('admin/testimonial_list', $data);
+	}
+     public function blog_list()
+	{
+		$data['blog'] = $this->CommonModal->getAllRowsInOrder('blog', 'id', 'DESC');
+		$data['title'] = 'Blog ';
+		$BdID = $this->input->get('BdID');
+		
+		if (decryptId($BdID) != '') {
+			$delete = $this->CommonModal->deleteRowById('blog', array('id' => decryptId($BdID)));
+			if ($delete) {
+				flashMultiData(['success_status' => "success", 'msg' => "Blog Deleted"]);
+			} else {
+				flashMultiData(['success_status' => "error", 'msg' => "Something Went Wrong."]);
+			}
+		 
+			redirect('blog-list');
+			exit;
+		}
+		$this->load->view('admin/blog_list', $data);
 	}
 
 	public function setting(){

@@ -128,6 +128,18 @@ $page_id = $this->input->get('page_id');
 					</ul>
 				</li> -->
 				<li>
+					<a href="<?= base_url('testimonial-list') ?>" class="waves-effect">
+						<i class="bx bx-images"></i>
+						<span key="t-file-manager">Testimonial List</span>
+					</a>
+				</li>
+				<li>
+					<a href="<?= base_url('blog-list') ?>" class="waves-effect">
+						<i class="bx bx-images"></i>
+						<span key="t-file-manager">Blog List</span>
+					</a>
+				</li>
+				<li>
 					<a href="<?= base_url('gallery_list') ?>" class="waves-effect">
 						<i class="bx bx-images"></i>
 						<span key="t-file-manager">Gallery</span>

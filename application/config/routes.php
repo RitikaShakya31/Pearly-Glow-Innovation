@@ -28,6 +28,8 @@ $route['dashboard'] = 'admin/AdminHome/dashboard';
 $route['banner'] = 'admin/AdminHome/banner';
 $route['gallery_list'] = 'admin/AdminHome/gallery';
 $route['setting'] = 'admin/AdminHome/setting';
+$route['testimonial-list'] = 'admin/AdminHome/testimonial_list';
+$route['blog-list'] = 'admin/AdminHome/blog_list';
 $route['promoCode'] = 'admin/AdminHome/promoCode';
 $route['category-featured/(:any)/(:any)'] = 'admin/AdminHome/categoryFeatured/$1/$2';
 $route['setDeliveryCharges'] = 'admin/AdminHome/setDeliveryCharges';
@@ -57,6 +59,8 @@ $route['contact_query'] = 'admin/AdminHome/contact_query';
 $route['categoryAll'] = 'admin/AdminProduct/categoryAll';
 $route['categoryAdd'] = 'admin/AdminProduct/categoryAdd';
 $route['galleryAdd'] = 'admin/AdminProduct/galleryAdd';
+$route['blogAdd'] = 'admin/AdminProduct/blogAdd';
+$route['testimonialAdd'] = 'admin/AdminProduct/testimonialAdd';
 $route['subCategoryAll'] = 'admin/AdminProduct/subCategoryAll';
 $route['subCategoryAdd'] = 'admin/AdminProduct/subCategoryAdd';
 

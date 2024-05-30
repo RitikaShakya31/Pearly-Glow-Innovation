@@ -292,6 +292,10 @@
             </div>
         </div>
         <div class="row">
+            <?php 
+            if($testimonial){
+                foreach($testimonial as $row){
+                ?>
             <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                 <div class="single-testimonial mb-4">
                     <div class="single-testimonial-img">
@@ -299,9 +303,7 @@
                     </div>
                     <div class="single-testimonial-text-warp">
                         <div class="single-testimonial-text-inner">
-                            <p>This scaler is very user-friendly. The instructions were clear, and the setup was
-                                straightforward. The ergonomic design makes it comfortable to use for extended periods,
-                                which is crucial during long procedures.</p>
+                            <p><?php $row[0]['description']?></p>
                             <footer class="blockquote-footer">Dr. Harish
                             </footer>
                         </div>
@@ -311,8 +313,10 @@
                     </div>
                 </div>
             </div>
+            <?php }
+            }?>
             <!-- end single testimonial -->
-            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+            <!-- <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                 <div class="single-testimonial">
                     <div class="single-testimonial-img">
                         <img class="img-fluid" src="assets/img/team/tes2.jpg" alt="">
@@ -330,7 +334,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- end single testimonial -->
         </div>
     </div>

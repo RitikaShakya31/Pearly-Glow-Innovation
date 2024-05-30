@@ -1,10 +1,8 @@
 <?php $this->load->view('admin/template/header', $title); ?>
 <?php $id = $this->input->get('id'); ?>
 <div class="main-content">
-
     <div class="page-content">
         <div class="container-fluid">
-
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
@@ -20,29 +18,34 @@
                                 <div class="row">
                                     <div class="col-lg-12 mb-3">
                                         <div class="row">
-                                            <label for="example-text-input" class="col-md-3 col-form-label">Gallery Title</label>
+                                            <label for="example-text-input" class="col-md-3 col-form-label">Blog Title</label>
                                             <div class="col-md-9">
-                                                <input class="form-control" type="text" name="title" required value="<?= $title ?>">
+                                                <input class="form-control" type="text" name="title" required
+                                                    value="<?= $title ?>">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-12 mb-3">
                                         <div class="row">
-                                            <label for="example-text-input" class="col-md-3 col-form-label">Gallery Description</label>
+                                            <label for="example-text-input" class="col-md-3 col-form-label">Blog
+                                                Description</label>
                                             <div class="col-md-9">
-                                                <input class="form-control" type="text" name="description" required value="<?= $description ?>">
+                                                <input class="form-control" type="text" name="description" required
+                                                    value="<?= $description ?>">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-12 mb-3">
                                         <div class="row">
-                                            <label for="example-text-input" class="col-md-3 col-form-label">Gallery Image</label>
+                                            <label for="example-text-input" class="col-md-3 col-form-label">Blog
+                                                Image</label>
                                             <div class="col-md-9">
-                                                <input class="form-control gallery_image" type="file" name="image" <?= $image == "" ? 'required' : '' ?>>
-                                                <?php
+                                                <input class="form-control " type="file" name="image"
+                                                    <?= $image == "" ? 'required' : '' ?>>
+                                                    <?php
                                                     if ($image != '') {
                                                         ?>
-                                                        <img src="<?= base_url('upload/gallery/' . $image) ?>"
+                                                        <img src="<?= base_url('upload/blog/' . $image) ?>"
                                                             width="100" />
                                                         <?php
                                                     }
@@ -50,7 +53,17 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- <div class="col-lg-12">
+                                        <img class="temp_image"
+                                            src="<?= base_url('upload/blog') . '/' . $image ?>"
+                                            style=" height: 300px;">
+                                        <input type="hidden" value="<?= $image ?>" name="temp_image">
+                                    </div> -->
+                                    <!-- <div class="col-lg-12 mt-2">
+                                        <span id="uploadImageError"></span>
+                                    </div> -->
                                 </div>
+
                                 <div class="text-center">
                                     <button type="submit" id="save" class="btn btn-primary w-md">Save</button>
                                 </div>
@@ -62,6 +75,7 @@
         </div>
     </div>
 </div>
-
 <?php $this->load->view('admin/template/footer'); ?>
+<script>
 
+</script>

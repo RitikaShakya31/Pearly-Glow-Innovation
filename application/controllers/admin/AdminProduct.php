@@ -47,10 +47,9 @@ class AdminProduct extends CI_Controller
 			$this->form_validation->set_rules('category_name', 'category name', 'required');
 			if ($this->form_validation->run()) {
 				$post['category_name'] = trim($category_name);
-
 				if (!empty($_FILES['image']['name'])) {
 					$picture = imageUploadWithRatio('image', CATEGORY_IMAGE, 600, 400, $data['image']);
-					$post['image'] = $picture;
+					$post['image'] = $picture; 
 				}
 				if (isset($id)) {
 					$update = $this->CommonModal->updateRowById('category', 'category_id', $decrypt_id, $post);
@@ -80,19 +79,105 @@ class AdminProduct extends CI_Controller
 		}
 
 		if (count($_POST) > 0) {
-            $post = $this->input->post();
-            $post['image'] = imageUpload('image', 'upload/gallery/');
-            $insertData = $this->CommonModal->insertRow('gallery', $post);
-            if ($insertData) {
-                flashMultiData(['success_status' => "success", 'msg' => "Gallery added"]);
-            } else {
-                flashMultiData(['success_status' => "error", 'msg' => "Something went wrong."]);
+			$post = $this->input->post();
+			// $post['image'] = imageUpload('image', 'upload/gallery/');
+			// $insertData = $this->CommonModal->insertRow('gallery', $post);.
+			if (!empty($_FILES['image']['name'])) {
+                $post['image'] = imageUpload('image', 'upload/gallery/');
             }
-            redirect('gallery');
-            exit();
-        }
+			if (isset($id)) {
+				$insertData = $this->CommonModal->updateRowById('gallery', 'id', $decrypt_id, $post);
+				flashData('errors', 'Gallery Update Successfully');
+			} else {
+				$insertData = $this->CommonModal->insertRow('gallery', $post);
+				flashData('errors', 'Gallery Add Successfully');
+			}
+			if ($insertData) {
+				flashMultiData(['success_status' => "success", 'msg' => "Gallery added"]);
+			} else {
+				flashMultiData(['success_status' => "error", 'msg' => "Something went wrong."]);
+			}
+			redirect('gallery_list');
+			exit();
+		}
 		$data['gtitle'] = "Add Gallery";
 		$this->load->view('admin/gallery_add', $data);
+	}
+	public function testimonialAdd()
+	{
+		extract($this->input->post());
+		$id = $this->input->get('id');
+		$decrypt_id = decryptId($this->input->get('id'));
+		$get = $this->CommonModal->getSingleRowById('testimonial', "id = '$decrypt_id'");
+		$data['name'] = set_value('name') == false ? @$get['name'] : set_value('name');
+		$data['content'] = set_value('content') == false ? @$get['content'] : set_value('content');
+		$data['image'] = set_value('image') == false ? @$get['image'] : set_value('image');
+		if (isset($id)) {
+			$data['gtitle'] = 'Edit Testimonial';
+		} else {
+			$data['gtitle'] = 'Add Testimonial';
+		}
+		if (count($_POST) > 0) {
+			$post = $this->input->post();
+			// $post['image'] = imageUpload('image', 'upload/testimonial/');
+			// $insertData = $this->CommonModal->insertRow('testimonial', $post);
+			if (!empty($_FILES['image']['name'])) {
+                $post['image'] = imageUpload('image', 'upload/testimonial/');
+            }
+			if (isset($id)) {
+				$insertData = $this->CommonModal->updateRowById('testimonial', 'id', $decrypt_id, $post);
+				flashData('errors', 'Testimonial Update Successfully');
+			} else {
+				$insertData = $this->CommonModal->insertRow('testimonial', $post);
+				flashData('errors', 'Testimonial Add Successfully');
+			}
+			if ($insertData) {
+				flashMultiData(['success_status' => "success", 'msg' => "Testimonial added"]);
+			} else {
+				flashMultiData(['success_status' => "error", 'msg' => "Something went wrong."]);
+			}
+			redirect('testimonial-list');
+			exit();
+		}
+		$data['gtitle'] = "Add Testimonial";
+		$this->load->view('admin/testimonial_add', $data);
+	}
+	public function blogAdd()
+	{
+		extract($this->input->post());
+		$id = $this->input->get('id');
+		$decrypt_id = decryptId($this->input->get('id'));
+		$get = $this->CommonModal->getSingleRowById('blog', "id = '$decrypt_id'");
+		$data['title'] = set_value('title') == false ? @$get['title'] : set_value('title');
+		$data['description'] = set_value('description') == false ? @$get['description'] : set_value('description');
+		$data['image'] = set_value('image') == false ? @$get['image'] : set_value('image');
+		if (isset($id)) {
+			$data['gtitle'] = 'Edit Blog';
+		} else {
+			$data['gtitle'] = 'Add Blog';
+		}
+		if (count($_POST) > 0) {
+			$post = $this->input->post();
+			// $post['image'] = imageUpload('image', 'upload/blog/');
+			// $insertData = $this->CommonModal->insertRow('blog', $post);
+			if (!empty($_FILES['image']['name'])) {
+                $post['image'] = imageUpload('image', 'upload/blog/');
+            }
+			if (isset($id)) {
+				$insertData = $this->CommonModal->updateRowById('blog', 'id', $decrypt_id, $post);
+			} else {
+				$insertData = $this->CommonModal->insertRow('blog', $post);
+			}
+			if ($insertData) {
+				flashMultiData(['success_status' => "success", 'msg' => "Blog added"]);
+			} else {
+				flashMultiData(['success_status' => "error", 'msg' => "Something went wrong."]);
+			}
+			redirect('blog-list');
+			exit();
+		}
+		$data['gtitle'] = "Add Blog";
+		$this->load->view('admin/blog_add', $data);
 	}
 
 	//   sub category
@@ -170,7 +255,7 @@ class AdminProduct extends CI_Controller
 			['sub_category', 'sub_category.sub_category_id = product.sub_category_id', 'LEFT'],
 		];
 		if (isset($subCategoryId)) {
-			$get['all_product'] = $this->CommonModal->getRowWithMultiJoin($select, 'product',  "product.is_delete = '1' AND product.sub_category_id = '" . decryptId($subCategoryId) . "'", $join, 'product_name', 'ASC', 1);
+			$get['all_product'] = $this->CommonModal->getRowWithMultiJoin($select, 'product', "product.is_delete = '1' AND product.sub_category_id = '" . decryptId($subCategoryId) . "'", $join, 'product_name', 'ASC', 1);
 		} else {
 			$get['all_product'] = $this->CommonModal->getRowWithMultiJoin($select, 'product', "product.is_delete = '1'", $join, 'product_name', 'ASC', 1);
 		}
@@ -230,7 +315,7 @@ class AdminProduct extends CI_Controller
 			$post['sale_price'] = $sale_price;
 			$post['quantity'] = $quantity;
 			$post['quantity_type'] = $quantity_type;
-			
+
 
 			if (isset($id)) {
 				$filesCount = count($_FILES['image']['name']);

@@ -6,7 +6,7 @@
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                         <h2 class="mb-sm-0 "><?= $title ?></h2>
-                        <a href="<?= base_url("galleryAdd"); ?>" class="btn btn-success"><i class="fa fa-plus"></i>
+                        <a href="<?= base_url("testimonialAdd"); ?>" class="btn btn-success"><i class="fa fa-plus"></i>
                             Add</a>
                     </div>
                 </div>
@@ -19,36 +19,36 @@
                                 <thead>
                                     <tr>
                                         <th>Sr no.</th>
-                                        <th>Title</th>
+                                        <th>Testimonial Name</th>
                                         <th>Image</th>
-                                        <th>Description</th>
+                                        <th>Testimonial Content</th>
                                         <th style="width: 20%">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    if ($gallery) {
+                                    if ($testimonial) {
                                         $i = 0;
-                                        foreach ($gallery as $all) {
+                                        foreach ($testimonial as $all) {
                                             $id = encryptId($all['id']);
                                             ?>
                                             <tr>
                                                 <td><?= ++$i; ?></td>
-                                                <td><?= $all['title'] ?></td>
+                                                <td><?= $all['name'] ?></td>
                                                 <td>
-                                                    <a href="<?= base_url("upload/gallery/") . $all['image']; ?> "
+                                                    <a href="<?= base_url("upload/testimonial/") . $all['image']; ?> "
                                                         target="_blank">
-                                                        <img src="<?= base_url("upload/gallery/") . $all['image']; ?>"
+                                                        <img src="<?= base_url("upload/testimonial/") . $all['image']; ?>"
                                                             style="width: 60px; height: 50px">
                                                     </a>
                                                 </td>
-                                                <td><?= $all['description'] ?></td>
+                                                <td style="white-space: break-spaces;"><?= $all['content'] ?></td>
 
                                                 <td>
-                                                    <a href="<?= base_url("galleryAdd?id=$id"); ?>" class="btn btn-success"><i
+                                                    <a href="<?= base_url("testimonialAdd?id=$id"); ?>" class="btn btn-success"><i
                                                             class="fa fa-edit"></i> Edit</a>
                                                     <a onclick="return confirm('Are you want to sure ?')"
-                                                        href="<?= base_url("gallery_list?BdID=$id"); ?>" class="btn btn-danger"><i
+                                                        href="<?= base_url("testimonial-list?BdID=$id"); ?>" class="btn btn-danger"><i
                                                             class="fa fa-trash"></i> Delete</a>
                                                 </td>
                                             </tr>

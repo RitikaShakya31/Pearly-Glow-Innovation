@@ -49,10 +49,10 @@
                     </div>
                     <div class="footer-social">
                         <ul>
-                            <li><a href="#"><i class="icofont icofont-social-facebook"></i></a></li>
-                            <li><a href="#"><i class="icofont icofont-social-twitter"></i></a></li>
-                            <li><a href="#"><i class="icofont icofont-social-youtube-play"></i></a></li>
-                            <li><a href="#"><i class="icofont icofont-social-instagram"></i></a></li>
+                            <li><a href="<?= $contact[0]['facebook']?>"><i class="icofont icofont-social-facebook"></i></a></li>
+                            <li><a href="<?= $contact[0]['twitter']?>"><i class="icofont icofont-social-twitter"></i></a></li>
+                            <li><a href="<?= $contact[0]['youtube']?>"><i class="icofont icofont-social-youtube-play"></i></a></li>
+                            <li><a href="<?= $contact[0]['instagram']?>"><i class="icofont icofont-social-instagram"></i></a></li>
                         </ul>
                     </div>
                     <!-- end widget title -->

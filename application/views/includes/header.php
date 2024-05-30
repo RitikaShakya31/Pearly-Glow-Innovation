@@ -7,16 +7,16 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="header-social">
                         <ul>
-                            <li><a href="#" style="color:#1919c2;"><i class="icofont icofont-social-facebook"></i></a>
+                            <li><a href="<?= $contact[0]['facebook']?>" style="color:#1919c2;"><i class="icofont icofont-social-facebook"></i></a>
                             </li>
-                            <li><a href="#" style="color:#1717d7;"><i class="icofont icofont-social-twitter"></i></a>
+                            <li><a href="<?= $contact[0]['twitter']?>" style="color:#1717d7;"><i class="icofont icofont-social-twitter"></i></a>
                             </li>
-                            <li><a href="#" style="color:#ac1818;"><i
+                            <li><a href="<?= $contact[0]['youtube']?>" style="color:#ac1818;"><i
                                         class="icofont icofont-social-youtube-play"></i></a>
                             </li>
-                            <li><a href="#" style="color:#8511b4;"><i class="icofont icofont-social-instagram"></i></a>
+                            <li><a href="<?= $contact[0]['instagram']?>" style="color:#8511b4;"><i class="icofont icofont-social-instagram"></i></a>
                             </li>
-                            <li><a href="#" style="color:#1717d7;"><i class="icofont icofont-social-linkedin"></i></a>
+                            <li><a href="<?= $contact[0]['linkedin']?>" style="color:#1717d7;"><i class="icofont icofont-social-linkedin"></i></a>
                             </li>
                         </ul>
                     </div>
