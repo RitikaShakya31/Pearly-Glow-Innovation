@@ -90,6 +90,6 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 // defined('BANNER_IMAGE')      or define('BANNER_IMAGE', 'upload/banner/');
 defined('CATEGORY_IMAGE')      or define('CATEGORY_IMAGE', 'upload/category/');
 // defined('COMPANY_IMAGE')      or define('COMPANY_IMAGE', 'upload/brand/');
-// defined('PRODUCT_IMAGE')      or define('PRODUCT_IMAGE', 'upload/product/');
+defined('PRODUCT_IMAGE')      or define('PRODUCT_IMAGE', 'upload/product/');
 // defined('DOCUMENT_IMAGE')      or define('DOCUMENT_IMAGE', 'upload/document_image/');
 // defined('PROFILE_IMAGE')      or define('PROFILE_IMAGE', 'upload/profile_image/');

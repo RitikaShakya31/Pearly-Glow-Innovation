@@ -101,7 +101,7 @@
                                 </div>
                             </a>
                         </div>
-                        <!-- <div class="col-md-4">
+                        <div class="col-md-4">
                             <a href="<?= base_url('productAll') ?>">
                                 <div class="card mini-stats-wid">
                                     <div class="card-body">
@@ -119,7 +119,7 @@
                                     </div>
                                 </div>
                             </a>
-                        </div> -->
+                        </div>
                     </div>
                     <div class="row">
                         <!-- <h4>Orders</h4>

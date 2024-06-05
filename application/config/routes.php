@@ -12,6 +12,7 @@ $route['precisionpro'] = 'Home/precisionpro';
 $route['product'] = 'Home/product';
 $route['contact'] = 'Home/contact';
 $route['about'] = 'Home/about';
+$route['checkout'] = 'Home/checkout';
 $route['catalog'] = 'Home/catalog';
 $route['product-details'] = 'Home/product_details';
 $route['sign-up'] = 'Home/sign_up';

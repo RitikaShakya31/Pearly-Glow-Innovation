@@ -18,7 +18,7 @@ class AdminProduct extends CI_Controller
 	public function categoryAll()
 	{
 		$get['category_all'] = $this->CommonModal->getRowByIdInOrder('category', "is_delete = '1'", 'category_name', 'ASC');
-		$get['title'] = 'All Category';
+		$get['title'] = 'Admin | All Category';
 		$this->load->view('admin/product/category_all', $get);
 	}
 
@@ -185,7 +185,7 @@ class AdminProduct extends CI_Controller
 	public function subCategoryAll()
 	{
 		$data['sub_category'] = $this->CommonModal->getRowByIdInOrder('sub_category', "is_delete = '1'", 'sub_category_name', 'ASC');
-		$data['title'] = "All Sub Category";
+		$data['title'] = "Admin | All Sub Category";
 		$this->load->view('admin/product/sub_category_all', $data);
 	}
 
@@ -259,7 +259,7 @@ class AdminProduct extends CI_Controller
 		} else {
 			$get['all_product'] = $this->CommonModal->getRowWithMultiJoin($select, 'product', "product.is_delete = '1'", $join, 'product_name', 'ASC', 1);
 		}
-		$get['title'] = 'All Product';
+		$get['title'] = 'Admin | All Product';
 		$this->load->view('admin/product/product_all', $get);
 	}
 

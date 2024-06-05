@@ -35,7 +35,7 @@
 <script src="<?= base_url() ?>assets/admin/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
 <script src="<?= base_url() ?>assets/admin/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
 <script src="<?= base_url() ?>assets/admin/libs/datatables.net-buttons/js/buttons.colVis.min.js"></script>
-<link rel="icon" href="<?= base_url() ?>assets/images/favicon.png">
+<link rel="icon" href="<?= base_url() ?>assets/img/mainlogo.png">
 <style>
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {

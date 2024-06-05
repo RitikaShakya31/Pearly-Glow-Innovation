@@ -16,17 +16,17 @@
                     <ul id="tabsJustified" class="nav nav-tabs">
                         <li class="nav-item">
                             <a href="#" data-target="#one" data-toggle="tab" class="nav-link active">
-                                <img src="assets/img/product/scalpel.png" alt="" height="80" width="80">
+                                <img src="assets/img/product/scalpel.png" alt="" height="120" width="120">
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#" data-target="#two" data-toggle="tab" class="nav-link">
-                                <img src="assets/img/product/prod1.png" alt="" height="80" width="80">
+                                <img src="assets/img/product/prod1.png" alt="" height="120" width="120">
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#" data-target="#three" data-toggle="tab" class="nav-link">
-                                <img src="assets/img/product/needle_holder.png" alt="" height="80" width="80">
+                                <img src="assets/img/product/needle_holder.png" alt="" height="120" width="120">
                             </a>
                         </li>
                     </ul>
@@ -45,8 +45,8 @@
                         <i class="icofont icofont-ui-rating"></i>
                         <i class="icofont icofont-ui-rate-blank"></i>
                     </p>
-                    <h3 class="pro-de-title">Scalpel</h3>
-                    <p class="price">₹500</p>
+                    <h3 class="pro-de-title" style="font-size: 40px;">Scalpel</h3>
+                    <p class="price" style="font-size:29px;">₹500</p>
                     <p class="single-pro-con">A scalpel, lancet, or bistoury is a small and extremely sharp bladed
                         instrument used for surgery, anatomical dissection, podiatry and various handicrafts. A lancet
                         is a double-edged scalpel. Scalpel blades are usually made of hardened and tempered steel,
@@ -79,8 +79,14 @@
                                 <tr>
                                     <!-- <th>Color:</th> -->
                                     <!-- <td>Blue,Green,Red,Gray</td> -->
-                                    <th>BRAND:</th>
+                                    <th>Brand:</th>
                                     <td>Sensiv</td>
+                                </tr>
+                                <tr>
+                                    <!-- <th>Color:</th> -->
+                                    <!-- <td>Blue,Green,Red,Gray</td> -->
+                                    <th>Article Number:</th>
+                                    <td>78627</td>
                                 </tr>
                             </tbody>
                         </table>

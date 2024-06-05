@@ -60,12 +60,11 @@
         </div>
         <div class="row">
             <?php
-
             if ($cate != '') {
                 foreach ($cate as $row) {
                     $count = getNumRows('product', array('category_id' => $row['category_id']));
                     ?>
-                    <div class="col-lg-3 col-md-3 col-sm-12 col-12" style="position: relative;">
+                    <div class="col-lg-4 col-md-3 col-sm-12 col-12" style="position: relative;">
                         <img class="rounded img-fluid align-self-top mt-2 mr-4 category-img"
                             src="<?= base_url(); ?>upload/category/<?= $row['image']; ?>" alt="<?= $row['category_name']; ?>">
 
@@ -220,60 +219,31 @@
             <!-- end section title -->
         </div>
         <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-12 col-12 mb-lg-0 mb-md-4 mb-sm-4 mb-4">
-                <div class="single-blog-home">
-                    <div class="single-blog-home-img">
-                        <a href="#"><img class="img-fluid" src="assets/img/blog/1.jpg" alt=""></a>
-                        <div class="single-blog-home-meta">
-                            <span class="post-date"><i class="lnr lnr-calendar-full"></i> 15 Dec</span>
-                            <span class="post-user"><i class="lnr lnr-user"></i> Admin</span>
-                            <span class="post-comment"><i class="lnr lnr-bubble"></i> 5 comments</span>
+            <?php
+            if ($blog) {
+                foreach ($blog as $row) {
+                    // echo '<pre>';
+                    // print_r($row);
+                    // exit();
+                    ?>
+                    <div class="col-lg-4 col-md-6 col-sm-12 col-12 mb-lg-0 mb-md-4 mb-sm-4 mb-4">
+                        <div class="single-blog-home">
+                            <div class="single-blog-home-img">
+                                <a href="#"><img class="img-fluid" src="<?= base_url(); ?>upload/blog/<?= $row['image']; ?>" alt=""></a>
+                                <div class="single-blog-home-meta">
+                                    <span class="post-date"><i class="lnr lnr-calendar-full"></i> 15 Dec</span>
+                                    <span class="post-user"><i class="lnr lnr-user"></i> Admin</span>
+                                    <span class="post-comment"><i class="lnr lnr-bubble"></i> 5 comments</span>
+                                </div>
+                            </div>
+                                <h5><?= $row['title']?></h5>
+                            <p><?= $row['description']?></p>
                         </div>
                     </div>
-                    <a href="#">
-                        <h5>Keynote Presentation</h5>
-                    </a>
-                    <p>Hear from Dr. Jane Smith, a leading dental expert, on the latest trends in dental technology
-                        and the impact of innovative instruments on patient care.</p>
-                </div>
-            </div>
+                <?php }
+            } ?>
             <!-- end single blog -->
-            <div class="col-lg-4 col-md-6 col-sm-12 col-12 mb-lg-0 mb-md-4 mb-sm-4 mb-4">
-                <div class="single-blog-home">
-                    <div class="single-blog-home-img">
-                        <a href="#"><img class="img-fluid" src="assets/img/blog/3.jpg" alt=""></a>
-                        <div class="single-blog-home-meta">
-                            <span class="post-date"><i class="lnr lnr-calendar-full"></i> 16 Dec</span>
-                            <span class="post-user"><i class="lnr lnr-user"></i> Jone</span>
-                            <span class="post-comment"><i class="lnr lnr-bubble"></i> 6 comments</span>
-                        </div>
-                    </div>
-                    <a href="#">
-                        <h5>Product Demonstrations</h5>
-                    </a>
-                    <p>See live demonstrations of PearlyGlow’s latest instruments, designed to enhance precision,
-                        reliability, and performance in dental procedures.</p>
-                </div>
-            </div>
-            <!-- end single blog -->
-            <div class="col-lg-4 col-md-6 col-sm-12 col-12">
-                <div class="single-blog-home">
-                    <div class="single-blog-home-img">
-                        <a href="#"><img class="img-fluid" src="assets/img/blog/2.jpg" alt=""></a>
-                        <div class="single-blog-home-meta">
-                            <span class="post-date"><i class="lnr lnr-calendar-full"></i> 17 Dec</span>
-                            <span class="post-user"><i class="lnr lnr-user"></i> Admin</span>
-                            <span class="post-comment"><i class="lnr lnr-bubble"></i> 7 comments</span>
-                        </div>
-                    </div>
-                    <a href="#">
-                        <h5>Interactive Workshops</h5>
-                    </a>
-                    <p>Participate in hands-on workshops where you can test out new tools and techniques under the
-                        guidance of experienced professionals in Interactive workshop.</p>
-                </div>
-            </div>
-            <!-- end single blog -->
+
         </div>
     </div>
     <!--- END CONTAINER -->
@@ -292,50 +262,33 @@
             </div>
         </div>
         <div class="row">
-            <?php 
-            if($testimonial){
-                foreach($testimonial as $row){
-                ?>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                <div class="single-testimonial mb-4">
-                    <div class="single-testimonial-img">
-                        <img class="img-fluid" src="assets/img/team/tes1.jpg" alt="">
-                    </div>
-                    <div class="single-testimonial-text-warp">
-                        <div class="single-testimonial-text-inner">
-                            <p><?php $row[0]['description']?></p>
-                            <footer class="blockquote-footer">Dr. Harish
-                            </footer>
-                        </div>
-                        <div class="single-testimonial-text-icon">
-                            <i class="icofont icofont-quote-left"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <?php }
-            }?>
-            <!-- end single testimonial -->
-            <!-- <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                <div class="single-testimonial">
-                    <div class="single-testimonial-img">
-                        <img class="img-fluid" src="assets/img/team/tes2.jpg" alt="">
-                    </div>
-                    <div class="single-testimonial-text-warp">
-                        <div class="single-testimonial-text-inner">
-                            <p>Considering the quality and performance of the UltraSonic Dental Scaler X200, it is
-                                definitely worth the investment. It has enhanced the efficiency of my dental procedures
-                                and the overall experience for my patients</p>
-                            <footer class="blockquote-footer">Dr. Kritika
-                            </footer>
-                        </div>
-                        <div class="single-testimonial-text-icon">
-                            <i class="icofont icofont-quote-left"></i>
+            <?php
+            if ($testimonial) {
+                foreach ($testimonial as $row) {
+                    // echo '<pre>';
+                    // print_r($row);
+                    // exit();
+                    ?>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                        <div class="single-testimonial mb-4">
+                            <div class="single-testimonial-img">
+                                <img class="img-fluid" src="<?= base_url(); ?>upload/testimonial/<?= $row['image']; ?>" alt="">
+                            </div>
+                            <div class="single-testimonial-text-warp">
+                                <div class="single-testimonial-text-inner">
+                                    <p><?= $row['content'] ?></p>
+                                    <footer class="blockquote-footer"><?= $row['name'] ?>
+                                    </footer>
+                                </div>
+                                <div class="single-testimonial-text-icon">
+                                    <i class="icofont icofont-quote-left"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div> -->
-            <!-- end single testimonial -->
+                <?php }
+            } ?>
+
         </div>
     </div>
     <!--- END CONTAINER -->

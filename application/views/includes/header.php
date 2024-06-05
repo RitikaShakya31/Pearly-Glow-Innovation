@@ -7,16 +7,20 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="header-social">
                         <ul>
-                            <li><a href="<?= $contact[0]['facebook']?>" style="color:#1919c2;"><i class="icofont icofont-social-facebook"></i></a>
+                            <li><a href="<?= $contact[0]['facebook'] ?>" style="color:#1919c2;"><i
+                                        class="icofont icofont-social-facebook"></i></a>
                             </li>
-                            <li><a href="<?= $contact[0]['twitter']?>" style="color:#1717d7;"><i class="icofont icofont-social-twitter"></i></a>
+                            <li><a href="<?= $contact[0]['twitter'] ?>" style="color:#1717d7;"><i
+                                        class="icofont icofont-social-twitter"></i></a>
                             </li>
-                            <li><a href="<?= $contact[0]['youtube']?>" style="color:#ac1818;"><i
+                            <li><a href="<?= $contact[0]['youtube'] ?>" style="color:#ac1818;"><i
                                         class="icofont icofont-social-youtube-play"></i></a>
                             </li>
-                            <li><a href="<?= $contact[0]['instagram']?>" style="color:#8511b4;"><i class="icofont icofont-social-instagram"></i></a>
+                            <li><a href="<?= $contact[0]['instagram'] ?>" style="color:#8511b4;"><i
+                                        class="icofont icofont-social-instagram"></i></a>
                             </li>
-                            <li><a href="<?= $contact[0]['linkedin']?>" style="color:#1717d7;"><i class="icofont icofont-social-linkedin"></i></a>
+                            <li><a href="<?= $contact[0]['linkedin'] ?>" style="color:#1717d7;"><i
+                                        class="icofont icofont-social-linkedin"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -53,8 +57,11 @@
                                 class="icofont icofont-search-alt-2"></i></button>
                     </form>
                 </div>
+
                 <div class="col-lg-2 col-md-2 col-sm-2 top-cart-sec">
-                    <i class="fa-solid fa-cart-shopping"></i>
+                    <a href="<?= base_url('checkout') ?>">
+                        <i class="fa-solid fa-cart-shopping "></i>
+                    </a>
                     <p><b>Total Items <br> <span> ₹ 0/-</span></b> </p>
                 </div>
             </div>
@@ -72,86 +79,128 @@
                             <ul class="navbar-nav">
                                 <li><a href="index.php" class="nav-link">Home</a></li>
                                 <li><a href="<?= base_url() ?>about" class="nav-link">About</a> </li>
+                                <!-- <li class="dropdown"><a href="<?= base_url() ?>" class="nav-link">Product</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="text-center">
+                                            <?php
+                                            if ($cate != '') {
+                                                foreach ($cate as $row) {
+                                                    ?>
+                                                    <a
+                                                        href="<?= base_url() ?>product?category=<?= encryptId($row['category_id']); ?>&&<?= url_title($row['category_name']); ?>">
+                                                        <img src="upload/category/<?= $row['image']; ?>" alt="" width="200"
+                                                            height="150">
+                                                        <br>
+                                                        <b><?= $row['category_name']; ?></b> </a>
+                                                <?php }
+                                            } ?>
+                                        </li>
+                                    </ul>
+                                </li> -->
                                 <li class="dropdown"><a href="<?= base_url() ?>" class="nav-link">Product</a>
                                     <ul class="dropdown-menu">
                                         <li class="text-center">
-                                            <a href="<?= base_url('product') ?>"><img
-                                                    src="assets/img/product/dyn.png" alt="" width="150"> <br>
+                                            <a href="<?= base_url('product') ?>"><img style="object-fit: cover;"
+                                                    src="assets/img/demo.jpg" alt="" width="200" height="150"><br>
                                                 <b>Diagnostic</b> </a>
                                             <a href="<?= base_url('') ?>"><img
-                                                    src="assets/img/product/needle_holder.png" alt="" width="150"> <br>
+                                                    src="assets/img/product/needle_holder.png" alt="" width="200"
+                                                    height="150"><br>
                                                 <b>Extraction</b></a>
                                             <a href="<?= base_url('') ?>"><img
-                                                    src="assets/img/product/needle_holder.png" alt="" width="150"> <br>
+                                                    src="assets/img/product/needle_holder.png" alt="" width="200"
+                                                    height="150"><br>
                                                 <b>Conservative</b></a>
                                             <a href="<?= base_url('') ?>"><img
-                                                    src="assets/img/product/needle_holder.png" alt="" width="150"> <br>
+                                                    src="assets/img/product/needle_holder.png" alt="" width="200"
+                                                    height="150"><br>
                                                 <b>Crown Instruments</b></a>
                                             <a href="<?= base_url('') ?>"><img
-                                                    src="assets/img/product/needle_holder.png" alt="" width="150"> <br>
+                                                    src="assets/img/product/needle_holder.png" alt="" width="200"
+                                                    height="150"><br>
                                                 <b>Implantology</b></a>
-                                            <a href="<?= base_url('') ?>"><img
-                                                    src="assets/img/product/needle_holder.png" alt="" width="150"> <br>
-                                                <b>Trays And Cassettes</b></a>
+
                                         </li>
                                         <li class="text-center">
                                             <a href="<?= base_url('') ?>"><img
-                                                    src="assets/img/product/needle_holder.png" alt="" width="150"> <br>
+                                                    src="assets/img/product/needle_holder.png" alt="" width="200"
+                                                    height="150"><br>
                                                 <b>Orthodontics</b></a>
                                             <a href="<?= base_url('') ?>"><img
-                                                    src="assets/img/product/needle_holder.png" alt="" width="150"> <br>
+                                                    src="assets/img/product/needle_holder.png" alt="" width="200"
+                                                    height="150"><br>
                                                 <b>Endodontic</b></a>
                                             <a href="<?= base_url('') ?>"><img
-                                                    src="assets/img/product/needle_holder.png" alt="" width="150"> <br>
+                                                    src="assets/img/product/needle_holder.png" alt="" width="200"
+                                                    height="150"><br>
                                                 <b>Oral Surgery</b></a>
                                             <a href="<?= base_url('') ?>"><img
-                                                    src="assets/img/product/needle_holder.png" alt="" width="150"> <br>
+                                                    src="assets/img/product/needle_holder.png" alt="" width="200"
+                                                    height="150"><br>
                                                 <b>Prosthodontics</b></a>
                                             <a href="<?= base_url('') ?>"><img
-                                                    src="assets/img/product/needle_holder.png" alt="" width="150"> <br>
+                                                    src="assets/img/product/needle_holder.png" alt="" width="200"
+                                                    height="150"><br>
                                                 <b>Periodontal</b></a>
+
                                         </li>
+                                        <li> <a href="<?= base_url('') ?>"><img
+                                                    src="assets/img/product/needle_holder.png" alt="" width="200"
+                                                    height="150"><br>
+                                                <b>Trays And Cassettes</b></a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown"><a href="<?= base_url() ?>" class="nav-link">PrecisionPro</a>
                                     <ul class="dropdown-menu">
                                         <li class="text-center">
-                                            <a href="<?= base_url('precisionpro') ?>"><img
-                                                    src="assets/img/product/dyn.png" alt="" width="150"><br>
+                                            <a href="<?= base_url('precisionpro') ?>"><img style="object-fit: cover;"
+                                                    src="assets/img/demo.jpg" alt="" width="200" height="150"><br>
                                                 <b>Diagnostic</b> </a>
                                             <a href="<?= base_url('') ?>"><img
-                                                    src="assets/img/product/needle_holder.png" alt="" width="150"><br>
+                                                    src="assets/img/product/needle_holder.png" alt="" width="200"
+                                                    height="150"><br>
                                                 <b>Extraction</b></a>
                                             <a href="<?= base_url('') ?>"><img
-                                                    src="assets/img/product/needle_holder.png" alt="" width="150"><br>
+                                                    src="assets/img/product/needle_holder.png" alt="" width="200"
+                                                    height="150"><br>
                                                 <b>Conservative</b></a>
                                             <a href="<?= base_url('') ?>"><img
-                                                    src="assets/img/product/needle_holder.png" alt="" width="150"><br>
+                                                    src="assets/img/product/needle_holder.png" alt="" width="200"
+                                                    height="150"><br>
                                                 <b>Crown Instruments</b></a>
                                             <a href="<?= base_url('') ?>"><img
-                                                    src="assets/img/product/needle_holder.png" alt="" width="150"><br>
+                                                    src="assets/img/product/needle_holder.png" alt="" width="200"
+                                                    height="150"><br>
                                                 <b>Implantology</b></a>
-                                            <a href="<?= base_url('') ?>"><img
-                                                    src="assets/img/product/needle_holder.png" alt="" width="150"><br>
-                                                <b>Trays And Cassettes</b></a>
+
                                         </li>
                                         <li class="text-center">
                                             <a href="<?= base_url('') ?>"><img
-                                                    src="assets/img/product/needle_holder.png" alt="" width="150"><br>
+                                                    src="assets/img/product/needle_holder.png" alt="" width="200"
+                                                    height="150"><br>
                                                 <b>Orthodontics</b></a>
                                             <a href="<?= base_url('') ?>"><img
-                                                    src="assets/img/product/needle_holder.png" alt="" width="150"><br>
+                                                    src="assets/img/product/needle_holder.png" alt="" width="200"
+                                                    height="150"><br>
                                                 <b>Endodontic</b></a>
                                             <a href="<?= base_url('') ?>"><img
-                                                    src="assets/img/product/needle_holder.png" alt="" width="150"><br>
+                                                    src="assets/img/product/needle_holder.png" alt="" width="200"
+                                                    height="150"><br>
                                                 <b>Oral Surgery</b></a>
                                             <a href="<?= base_url('') ?>"><img
-                                                    src="assets/img/product/needle_holder.png" alt="" width="150"><br>
+                                                    src="assets/img/product/needle_holder.png" alt="" width="200"
+                                                    height="150"><br>
                                                 <b>Prosthodontics</b></a>
                                             <a href="<?= base_url('') ?>"><img
-                                                    src="assets/img/product/needle_holder.png" alt="" width="150"><br>
+                                                    src="assets/img/product/needle_holder.png" alt="" width="200"
+                                                    height="150"><br>
                                                 <b>Periodontal</b></a>
+
                                         </li>
+                                        <li> <a href="<?= base_url('') ?>"><img
+                                                    src="assets/img/product/needle_holder.png" alt="" width="200"
+                                                    height="150"><br>
+                                                <b>Trays And Cassettes</b></a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown">
@@ -174,11 +223,12 @@
                     </div>
                     <div class="col-lg-2  d-lg-block d-md-none d-sm-none d-none call-sec-top ">
                         <i class="fa-solid fa-phone"></i>
-                        <p><b> <a href="tel:+<?= $contact[0]['phone_number']?>"> +<?= $contact[0]['phone_number']?></a></b></p>
+                        <p><b> <a href="tel:+<?= $contact[0]['phone_number'] ?>">
+                                    +<?= $contact[0]['phone_number'] ?></a></b></p>
                     </div>
                     <div class="col-lg-2  d-lg-block d-md-none d-sm-none d-none call-sec-top">
                         <i class="fa-solid fa-envelope"></i>
-                        <p><b><a href="mailto:<?= $contact[0]['email']?>"><?= $contact[0]['email']?></a></b></p>
+                        <p><b><a href="mailto:<?= $contact[0]['email'] ?>"><?= $contact[0]['email'] ?></a></b></p>
                     </div>
                 </div>
             </div>

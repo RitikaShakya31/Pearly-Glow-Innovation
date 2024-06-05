@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <link href="<?= base_url() ?>assets/admin/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url() ?>assets/admin/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet"
+        type="text/css" />
 
     <link href="<?= base_url() ?>assets/admin/css/icons.min.css" rel="stylesheet" type="text/css" />
 
@@ -24,44 +25,54 @@
                     <div class="card overflow-hidden">
                         <div class="bg-primary bg-soft">
                             <div class="row align-items-center">
-                                <div class="col-7">
+                                <div class="col-12">
                                     <div class="text-primary p-4">
-                                        <h5 class="text-primary">Welcome Back !</h5>
-                                        <p>Sign in to continue to Pearly Glow Innovation.</p>
+                                        <!-- <h5 class="text-primary">Welcome Back !</h5> -->
+                                        <!-- <p>Sign in to continue to Pearly Glow Innovation.</p> -->
+                                        <img src="<?= base_url('assets/img/Pearlyglow-Innvotion.png') ?>" alt="logo"
+                                            class="img-fluid" style="width:100%;">
+
                                     </div>
                                 </div>
-                                <div class="col-5">
+                                <!-- <div class="col-5">
                                     <img src="<?= base_url('assets/img/Pearlyglow-Innvotion.png') ?>" alt="logo" class="img-fluid" width="150px" >
-                                    <!-- <h3>Classy at home</h3> -->
-                                </div>
+                                    <h3>Classy at home</h3>
+                                </div> -->
                             </div>
                         </div>
                         <div class="card-body pt-0 mt-3">
 
                             <?php if ($this->session->flashdata('login_error') != '') {
-                            ?>
+                                ?>
                                 <div class="alert alert-danger">
                                     <span><?= $this->session->flashdata('login_error'); ?></span>
                                 </div>
-                            <?php
+                                <?php
                             } ?>
                             <div class="p-2">
                                 <form class="form-horizontal" action="" method="post">
                                     <div class="mb-3">
                                         <label class="form-label">Contact Number</label>
-                                        <input type="text" class="form-control input-mask" id="input-repeat" data-inputmask="'mask': '9', 'repeat': 10, 'greedy' : false" placeholder="Enter Contact Number" required name="contact_no" value="<?= set_value('contact_no') ?>">
+                                        <input type="text" class="form-control input-mask" id="input-repeat"
+                                            data-inputmask="'mask': '9', 'repeat': 10, 'greedy' : false"
+                                            placeholder="Enter Contact Number" required name="contact_no"
+                                            value="<?= set_value('contact_no') ?>">
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="form-label">Password</label>
                                         <div class="input-group auth-pass-inputgroup">
-                                            <input type="password" class="form-control" placeholder="Enter password" required aria-label="Password" name="password" value="<?= set_value('password') ?>" aria-describedby="password-addon">
-                                            <button class="btn btn-light " type="button" id="password-addon"><i class="mdi mdi-eye-outline"></i></button>
+                                            <input type="password" class="form-control" placeholder="Enter password"
+                                                required aria-label="Password" name="password"
+                                                value="<?= set_value('password') ?>" aria-describedby="password-addon">
+                                            <button class="btn btn-light " type="button" id="password-addon"><i
+                                                    class="mdi mdi-eye-outline"></i></button>
                                         </div>
                                     </div>
 
                                     <div class="mt-3 d-grid">
-                                        <button class="btn btn-primary waves-effect waves-light" type="submit">Log In</button>
+                                        <button class="btn btn-primary waves-effect waves-light" type="submit">Log
+                                            In</button>
                                     </div>
                                 </form>
                             </div>

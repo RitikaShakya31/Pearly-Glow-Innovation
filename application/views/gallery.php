@@ -1,4 +1,4 @@
-<div style="width:100%;background:#1a1e51;">
+<div style="width:100%;background:#19a1e3;">
 	<div>
 		<h3 style="color: white;text-align: center;line-height: 130px;font-size: 40px;">Our Gallery</h3>
 	</div>

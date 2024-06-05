@@ -25,14 +25,14 @@ class AdminHome extends CI_Controller
 		$getRows['dispatch_orders'] = $this->CommonModal->getNumRows("book_product", "booking_status = '3' AND (payment_mode = '1' OR payment_mode = '2' AND transaction_status = '1')");
 		$getRows['completed_orders'] = $this->CommonModal->getNumRows("book_product", "booking_status = '4' AND (payment_mode = '1' OR payment_mode = '2' AND transaction_status = '1')");
 		$getRows['canceled_orders'] = $this->CommonModal->getNumRows("book_product", "booking_status = '2' AND (payment_mode = '1' OR payment_mode = '2' AND transaction_status = '1')");
-		$getRows['title'] = "Home";
+		$getRows['title'] = "Admin | Dashboard";
 		$getRows['recentOrderList'] = $this->CommonModal->getRowByIdInOrder('book_product', "booking_status = '0' AND (payment_mode = '1' OR payment_mode = '2' AND transaction_status = '1')", 'create_date', 'DESC');
 		$this->load->view('admin/index', $getRows);
 	}
      public function contact_query()
 	{
 		$data['contact'] = $this->CommonModal->getRowByIdInOrder('contact_query', [], 'cid', 'DESC');
-		$data['title'] = 'Contact ';
+		$data['title'] = 'Admin | Contact Query';
 		$BdID = $this->input->get('BdID');
 		if (decryptId($BdID) != '') {
 			$delete = $this->CommonModal->deleteRowById('contact_query', array('cid' => decryptId($BdID)));
@@ -50,7 +50,7 @@ class AdminHome extends CI_Controller
      public function gallery()
 	{
 		$data['gallery'] = $this->CommonModal->getAllRowsInOrder('gallery', 'id', 'DESC');
-		$data['title'] = 'Gallery ';
+		$data['title'] = 'Admin | Gallery ';
 		$BdID = $this->input->get('BdID');
 		if (decryptId($BdID) != '') {
 			$delete = $this->CommonModal->deleteRowById('gallery', array('id' => decryptId($BdID)));
@@ -68,7 +68,7 @@ class AdminHome extends CI_Controller
      public function testimonial_list()
 	{
 		$data['testimonial'] = $this->CommonModal->getAllRowsInOrder('testimonial', 'id', 'DESC');
-		$data['title'] = 'Testimonial ';
+		$data['title'] = 'Admin | Testimonial ';
 		$BdID = $this->input->get('BdID');
 		if (decryptId($BdID) != '') {
 			$delete = $this->CommonModal->deleteRowById('testimonial', array('id' => decryptId($BdID)));
@@ -86,7 +86,7 @@ class AdminHome extends CI_Controller
      public function blog_list()
 	{
 		$data['blog'] = $this->CommonModal->getAllRowsInOrder('blog', 'id', 'DESC');
-		$data['title'] = 'Blog ';
+		$data['title'] = 'Admin | Blog ';
 		$BdID = $this->input->get('BdID');
 		
 		if (decryptId($BdID) != '') {
@@ -105,7 +105,7 @@ class AdminHome extends CI_Controller
 
 	public function setting(){
 		$data['setting'] = $this->CommonModal->getAllRowsInOrder('setting', 'id', 'DESC');
-		$data['title'] = 'Setting';
+		$data['title'] = 'Admin | Setting';
         if (count($_POST) > 0) {
             $post = $this->input->post();
             $updateData = $this->CommonModal->updateRowById('setting', 'id', 1 , $post);

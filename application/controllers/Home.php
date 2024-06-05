@@ -15,10 +15,8 @@ class Home extends CI_Controller
             }
         }
         $data['contact'] = $this->CommonModal->getAllRows('setting');
-        $data['testimonial'] = $this->CommonModal->getAllRowsInOrderWithLimit('testimonial', '2', 'id', 'DESC');
-        // echo '<pre>';
-        // print_r($data['testimonial']);
-        // exit();
+        $data['blog'] = $this->CommonModal->getAllRowsInOrderWithLimit('blog', '3', 'id', 'DESC');
+        $data['testimonial'] = $this->CommonModal->getAllRowsInOrderWithLimit('testimonial', '4', 'id', 'DESC');
         $data['cate'] = $this->CommonModal->getAllRowsInOrderWithLimit('category', '25', 'category_id', 'ASC');
         $this->load->view('includes/header-link', $data);
         $this->load->view('includes/header');
@@ -54,7 +52,7 @@ class Home extends CI_Controller
         $data['cateid'] = decryptId($cateid);
         $data['contact'] = $this->CommonModal->getAllRows('setting');
         $data['sidecategory'] = $this->CommonModal->getAllRowsInOrder('category', 'category_id', 'ASC');
-        $data['subcategory'] = $this->CommonModal->getAllRowsInOrder('sub_category', 'category_id', 'desc');
+        $data['subcategory'] = $this->CommonModal->getAllRowsInOrder('sub_category', 'category_id', 'DESC');
         $this->load->view('includes/header-link', $data);
         $this->load->view('includes/header');
         $this->load->view('product');
@@ -64,6 +62,11 @@ class Home extends CI_Controller
     public function precisionpro()
     {
         $data['title'] = 'Precision Pro | Pearly Glow Innovation';
+        $cateid = $this->input->get('category');
+        $data['cateid'] = decryptId($cateid);
+        $data['contact'] = $this->CommonModal->getAllRows('setting');
+        $data['sidecategory'] = $this->CommonModal->getAllRowsInOrder('category', 'category_id', 'ASC');
+        $data['subcategory'] = $this->CommonModal->getAllRowsInOrder('sub_category', 'category_id', 'DESC');
         $data['contact'] = $this->CommonModal->getAllRows('setting');
         $this->load->view('includes/header-link', $data);
         $this->load->view('includes/header');
@@ -109,6 +112,16 @@ class Home extends CI_Controller
         $this->load->view('includes/footer');
         $this->load->view('includes/footer-link');
     }
+    public function checkout()
+    {
+        $data['contact'] = $this->CommonModal->getAllRows('setting');
+        $data['title'] = 'Checkout | Pearly Glow Innovation';
+        $this->load->view('includes/header-link', $data);
+        $this->load->view('includes/header');
+        $this->load->view('checkout');
+        $this->load->view('includes/footer');
+        $this->load->view('includes/footer-link');
+    }
     public function policies()
     {
         $data['contact'] = $this->CommonModal->getAllRows('setting');
@@ -119,6 +132,7 @@ class Home extends CI_Controller
         $this->load->view('includes/footer');
         $this->load->view('includes/footer-link');
     }
+    
     public function sign_up()
     {
         

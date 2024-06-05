@@ -130,13 +130,13 @@ $page_id = $this->input->get('page_id');
 				<li>
 					<a href="<?= base_url('testimonial-list') ?>" class="waves-effect">
 						<i class="bx bx-images"></i>
-						<span key="t-file-manager">Testimonial List</span>
+						<span key="t-file-manager">Testimonial</span>
 					</a>
 				</li>
 				<li>
 					<a href="<?= base_url('blog-list') ?>" class="waves-effect">
 						<i class="bx bx-images"></i>
-						<span key="t-file-manager">Blog List</span>
+						<span key="t-file-manager"> Upcoming Event</span>
 					</a>
 				</li>
 				<li>
