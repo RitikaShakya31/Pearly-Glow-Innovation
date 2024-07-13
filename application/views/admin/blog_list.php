@@ -48,8 +48,9 @@
                                                     <a href="<?= base_url("blogAdd?id=$id"); ?>" class="btn btn-success"><i
                                                             class="fa fa-edit"></i> Edit</a>
                                                     <a onclick="return confirm('Are you want to sure ?')"
-                                                        href="<?= base_url("testimonial_list?BdID=$id"); ?>" class="btn btn-danger"><i
+                                                        href="<?= base_url("blog-list?BdID=$id"); ?>" class="btn btn-danger"><i
                                                             class="fa fa-trash"></i> Delete</a>
+                                                           
                                                 </td>
                                             </tr>
                                             <?php

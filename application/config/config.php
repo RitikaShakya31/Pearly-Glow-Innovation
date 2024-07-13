@@ -1,8 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-$config['base_url'] = 'http://localhost/pearly_glow/';
-// $config['base_url'] = 'http://techkinds.co.in/pearly-glow-innovation/';
+// $config['base_url'] = 'http://localhost/pearly_glow/';
+$config['base_url'] = ((isset($_SERVER['HTTPS']))? 'https':'http').'://'.$_SERVER['SERVER_NAME'].'/pearly_glow';
+// $config['base_url'] = ((isset($_SERVER['HTTPS']))? 'https':'http').'://'.$_SERVER['SERVER_NAME'].'/pearly-glow-innovation';
 
 $config['index_page'] = '';
 

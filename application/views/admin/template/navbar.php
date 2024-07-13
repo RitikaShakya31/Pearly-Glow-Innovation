@@ -30,12 +30,12 @@ $page_id = $this->input->get('page_id');
 					</a>
 				</li> -->
 
-				<!-- <li>
+				<li>
 					<a href="<?= base_url('promoCode') ?>" class="waves-effect">
 						<i class="bx bx-file"></i>
 						<span key="t-file-manager">Promo Code</span>
 					</a>
-				</li> -->
+				</li>
 				<!-- <li>
 					<a href="<?= base_url('setDeliveryCharges') ?>" class="waves-effect">
 						<i class="bx bx-file"></i>
@@ -86,7 +86,7 @@ $page_id = $this->input->get('page_id');
 					</ul>
 				</li> -->
 
-				<!-- <li class="<?php if ($page == "recentOrders" || $page == 'acceptedOrders' || $page == 'dispatchOrders' || $page == 'completedOrders' || $page == 'allOrders') {
+				<li class="<?php if ($page == "recentOrders" || $page == 'acceptedOrders' || $page == 'dispatchOrders' || $page == 'completedOrders' || $page == 'allOrders') {
 					echo "mm-active";
 				} ?>">
 					<a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -126,7 +126,14 @@ $page_id = $this->input->get('page_id');
 						</li>
 
 					</ul>
-				</li> -->
+				</li>
+				
+				<li>
+					<a href="<?= base_url('banner-list') ?>" class="waves-effect">
+						<i class="bx bx-images"></i>
+						<span key="t-file-manager">Banner</span>
+					</a>
+				</li>
 				<li>
 					<a href="<?= base_url('testimonial-list') ?>" class="waves-effect">
 						<i class="bx bx-images"></i>
@@ -136,13 +143,25 @@ $page_id = $this->input->get('page_id');
 				<li>
 					<a href="<?= base_url('blog-list') ?>" class="waves-effect">
 						<i class="bx bx-images"></i>
-						<span key="t-file-manager"> Upcoming Event</span>
+						<span key="t-file-manager">Blogs</span>
+					</a>
+				</li>
+				<li>
+					<a href="<?= base_url('event-list') ?>" class="waves-effect">
+						<i class="bx bx-images"></i>
+						<span key="t-file-manager">Upcoming Event</span>
 					</a>
 				</li>
 				<li>
 					<a href="<?= base_url('gallery_list') ?>" class="waves-effect">
 						<i class="bx bx-images"></i>
-						<span key="t-file-manager">Gallery</span>
+						<span key="t-file-manager">Photo Gallery</span>
+					</a>
+				</li>
+				<li>
+					<a href="<?= base_url('video_list') ?>" class="waves-effect">
+						<i class="bx bx-images"></i>
+						<span key="t-file-manager">Video Gallery</span>
 					</a>
 				</li>
 				<li>

@@ -28,6 +28,14 @@
                                     </div>
                                     <div class="col-lg-12 mb-3">
                                         <div class="row">
+                                            <label for="example-text-input" class="col-md-3 col-form-label">Priority Order</label>
+                                            <div class="col-md-9">
+                                                <input class="form-control" type="text" name="priority" required value="<?= $priority ?>">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 mb-3">
+                                        <div class="row">
                                             <label for="example-text-input" class="col-md-3 col-form-label">Category Image</label>
                                             <div class="col-md-9">
                                                 <input class="form-control category_image" type="file" name="image" <?= $image == "" ? 'required' : '' ?>>

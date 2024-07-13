@@ -368,7 +368,7 @@
 			height: 100%;
 			display: flex;
 			flex-direction: column;
-			justify-content: space-between;
+			/* justify-content: space-between; */
 			align-items: stretch;
 		}
 
@@ -381,7 +381,7 @@
 		}
 
 		.page .page-content .page-image {
-			height: 400px !important;
+			height: 700px !important;
 			background-size: cover;
 			background-position: center center;
 			background-repeat: no-repeat;
@@ -406,7 +406,7 @@
 		}
 
 		.page.--left {
-			height: 464px !important;
+			/* height: 464px !important; */
 			border-right: 0;
 			background: white;
 			border: none;
@@ -414,7 +414,7 @@
 		}
 
 		.page.--right {
-			height: 464px !important;
+			/* height: 464px !important; */
 			border-left: 0;
 			/* box-shadow: inset 7px 0 30px -7px rgba(0, 0, 0, 0.4); */
 		}
@@ -459,23 +459,27 @@
 			padding: 40px 0px 0px 30px;
 			color: #19a1e3;
 		}
+
 		.cat ul {
-			margin-top:20px;
+
+			margin-top: 20px;
+			width: 300px;
 		}
-		
+
 		.cat li {
 			border-radius: 4px;
 			padding: 10px;
 			background: #19a1e3;
 			color: white;
 			margin-bottom: 10px;
-		} 
-		.underline_bottom{
+		}
+
+		.underline_bottom {
 			height: 3px;
 			background: #19a1e3;
 			width: 80px;
 			margin-left: 30px;
-			margin-bottom:50px;
+			/* margin-bottom: 50px; */
 
 		}
 	</style>
@@ -485,17 +489,23 @@
 	<div class="">
 		<div class="row">
 			<div class="col-lg-4 cat">
-				<h1>Category</h1>
+				<h1>Catalog Category</h1>
 				<div class="underline_bottom"></div>
-				<ul>
-					<li>Category 1</li>
-					<li>Category 2</li>
-					<li>Category 3</li>
-					<li>Category 4</li>
-					<li>Category 5</li>
-					<li>Category 6</li>
-				</ul>
-
+				<?php
+				// Array of background colors
+				$bgColors = ['#ff4444', '#50a7fe',  '#0da90d', '#f69330', '#7740e7', '#454040', '#c93c9b', '#eecc00']; // Add more colors as needed
+				echo '<ul>';
+				if ($cate != '') {
+					$colorIndex = 0;
+					foreach ($cate as $row) {
+						$count = getNumRows('product', array('category_id' => $row['category_id']));
+						$bgColor = $bgColors[$colorIndex % count($bgColors)];
+						echo '<li style="background-color: ' . $bgColor . ';">' . $row['category_name'] . '</li>';
+						$colorIndex++;
+					}
+				}
+				echo '</ul>';
+				?>
 			</div>
 			<div class="col-lg-8">
 				<div class="demo-block overflow-hidden">
@@ -517,13 +527,13 @@
 						</div>
 					</div>
 					<div class="container">
-						<div id="htmlBook" >
+						<div id="htmlBook">
 							<div class="flip-book html-book stf__wrapper --landscape" id="htmlBookExample"
 								style="min-width: 350px; min-height: 467px; width: 100%; max-width: 1400px; display: block; padding-bottom: 66.6364%;">
 								<div class="stf__block" style="border:none">
 									<div class="page stf__item" style="display: none; z-index: 1; background:#f8f9fa;">
 										<div class="page-content">
-											<div class="page-image" ></div>
+											<div class="page-image"></div>
 										</div>
 									</div>
 									<div class="page stf__item" style="display: none; z-index: 1;">

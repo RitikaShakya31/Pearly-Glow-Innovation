@@ -42,6 +42,8 @@
                         <li><a href="#"><i class="lnr lnr-map-marker"></i><?= $contact[0]['address']?>
                             </a></li>
                         <li><a href="mailto:<?= $contact[0]['email']?>"><i class="lnr lnr-envelope "></i> <?= $contact[0]['email']?></a></li>
+                        <li><a href="mailto:chandrakantzarekar@pearlyglowinnovations.com"><i class="lnr lnr-envelope "></i>chandrakantzarekar@pearlyglowinnovations.com
+                        </a></li>
                         <li><a href="tel:+<?= $contact[0]['phone_number']?>"><i class="lnr lnr-phone "></i> +<?= $contact[0]['phone_number']?></a></li>
                     </ul>
                     <div class="footer-section-title col-12 p-0 mt-4 mb-4">

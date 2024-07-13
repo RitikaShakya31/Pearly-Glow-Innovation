@@ -32,6 +32,7 @@ class AdminHome extends CI_Controller
      public function contact_query()
 	{
 		$data['contact'] = $this->CommonModal->getRowByIdInOrder('contact_query', [], 'cid', 'DESC');
+	
 		$data['title'] = 'Admin | Contact Query';
 		$BdID = $this->input->get('BdID');
 		if (decryptId($BdID) != '') {
@@ -50,7 +51,7 @@ class AdminHome extends CI_Controller
      public function gallery()
 	{
 		$data['gallery'] = $this->CommonModal->getAllRowsInOrder('gallery', 'id', 'DESC');
-		$data['title'] = 'Admin | Gallery ';
+		$data['title'] = 'Admin | Photo Gallery ';
 		$BdID = $this->input->get('BdID');
 		if (decryptId($BdID) != '') {
 			$delete = $this->CommonModal->deleteRowById('gallery', array('id' => decryptId($BdID)));
@@ -64,6 +65,25 @@ class AdminHome extends CI_Controller
 			exit;
 		}
 		$this->load->view('admin/gallery', $data);
+	}
+    
+     public function video_list()
+	{
+		$data['video_gallery'] = $this->CommonModal->getAllRowsInOrder('video_gallery', 'id', 'DESC');
+		$data['title'] = 'Admin | Video Gallery ';
+		$BdID = $this->input->get('BdID');
+		if (decryptId($BdID) != '') {
+			$delete = $this->CommonModal->deleteRowById('video_gallery', array('id' => decryptId($BdID)));
+			if ($delete) {
+				flashMultiData(['success_status' => "success", 'msg' => "Video Gallery Deleted"]);
+			} else {
+				flashMultiData(['success_status' => "error", 'msg' => "Something Went Wrong."]);
+			}
+		 
+			redirect('video_list');
+			exit;
+		}
+		$this->load->view('admin/video_list', $data);
 	}
      public function testimonial_list()
 	{
@@ -102,6 +122,25 @@ class AdminHome extends CI_Controller
 		}
 		$this->load->view('admin/blog_list', $data);
 	}
+     public function event_list()
+	{
+		$data['event'] = $this->CommonModal->getAllRowsInOrder('event', 'id', 'DESC');
+		$data['title'] = 'Admin | Event ';
+		$BdID = $this->input->get('BdID');
+		
+		if (decryptId($BdID) != '') {
+			$delete = $this->CommonModal->deleteRowById('event', array('id' => decryptId($BdID)));
+			if ($delete) {
+				flashMultiData(['success_status' => "success", 'msg' => "Event Deleted"]);
+			} else {
+				flashMultiData(['success_status' => "error", 'msg' => "Something Went Wrong."]);
+			}
+		 
+			redirect('event-list');
+			exit;
+		}
+		$this->load->view('admin/event_list', $data);
+	}
 
 	public function setting(){
 		$data['setting'] = $this->CommonModal->getAllRowsInOrder('setting', 'id', 'DESC');
@@ -121,43 +160,19 @@ class AdminHome extends CI_Controller
 	}
 	public function banner()
 	{
-		extract($this->input->get());
-		$id = $this->input->get('bID');
+		$data['banner'] = $this->CommonModal->getAllRowsInOrder('banner', 'banner_id', 'DESC');
+		$data['title'] = 'Admin | Banner ';
 		$BdID = $this->input->get('BdID');
-		$sId = decryptId($id);
-		$get = $this->CommonModal->getSingleRowById('banner', "banner_id = '$sId'");
-		$data['image_path'] = set_value('image_path') == false ? @$get['image_path'] : set_value('image_path');
-		$data['all_banner'] = $this->CommonModal->getAllRowsInOrder('banner', 'create_date', 'DESC');
-
 		if (decryptId($BdID) != '') {
 			$delete = $this->CommonModal->deleteRowById('banner', array('banner_id' => decryptId($BdID)));
-			unlink('upload/banner/' . $img);
-			redirect('banner');
-			exit;
-		}
-
-		if (isset($id)) {
-			$data['title'] = 'Banner Edit';
-		} else {
-			$data['title'] = 'Banner add';
-		}
-		if (count($_POST) > 0) {
-
-			if (!empty($_FILES['image_path']['name'])) {
-				$p = fullImage('image_path', BANNER_IMAGE, $data['image_path']);
-				$post['image_path'] = $p;
-			}
-
-			if (isset($id)) {
-				$post['update_date'] = setDateTime();
-				$update = $this->CommonModal->updateRowById('banner', 'banner_id', $sId, $post);
-				flashData('errors', 'Banner Update Successfully');
+			if ($delete) {
+				flashMultiData(['success_status' => "success", 'msg' => "Banner Deleted"]);
 			} else {
-				$post['create_date'] = setDateTime();
-				$insert = $this->CommonModal->insertRow('banner', $post);
-				flashData('errors', 'Banner Add successfully.');
+				flashMultiData(['success_status' => "error", 'msg' => "Something Went Wrong."]);
 			}
-			redirect('banner');
+		 
+			redirect('banner-list');
+			exit;
 		}
 		$this->load->view('admin/banner', $data);
 	}

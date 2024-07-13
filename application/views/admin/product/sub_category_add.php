@@ -20,9 +20,11 @@
                                 <div class="row">
                                     <div class="col-lg-12 mb-3">
                                         <div class="row">
-                                            <label for="example-text-input" class="col-md-3 col-form-label">Sub Category Name</label>
+                                            <label for="example-text-input" class="col-md-3 col-form-label">Sub Category
+                                                Name</label>
                                             <div class="col-md-9">
-                                                <input class="form-control" type="text" name="sub_category_name" required value="<?= $sub_category_name ?>">
+                                                <input class="form-control" type="text" name="sub_category_name"
+                                                    required value="<?= $sub_category_name ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -35,32 +37,44 @@
                                                     <?php
                                                     $c = getRowsByMoreIdWithOrder('tbl_category', "is_delete = '1'", "category_name", 'ASC');
                                                     foreach ($c as $cate) {
-                                                    ?>
+                                                        ?>
                                                         <option value="<?= $cate['category_id'] ?>" <?php if ($category_id == $cate['category_id']) {
-                                                                                                        echo 'selected';
-                                                                                                    } ?>><?= ucwords($cate['category_name']) ?></option>
-                                                    <?php
+                                                              echo 'selected';
+                                                          } ?>><?= ucwords($cate['category_name']) ?></option>
+                                                        <?php
                                                     }
                                                     ?>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12 mb-3">
+                                    <!-- <div class="col-lg-12 mb-3">
                                         <div class="row">
-                                            <label for="example-text-input" class="col-md-3 col-form-label">Sub Category Image</label>
+                                            <label for="example-text-input" class="col-md-3 col-form-label">Sub Category
+                                                Image</label>
                                             <div class="col-md-9">
-                                                <input class="form-control category_image" type="file" name="sub_category_image" <?= $sub_category_image == "" ? 'required' : '' ?>>
+                                                <input class="form-control category_image" type="file"
+                                                    name="sub_category_image" <?= $sub_category_image == "" ? 'required' : '' ?>>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <img class="temp_image" src="<?= base_url('upload/category') . '/' . $sub_category_image ?>" style=" height: 300px;">
+                                    </div> -->
+                                    <!-- <div class="col-lg-12 mb-3">
+                                        <div class="row">
+                                            <label for="example-text-input" class="col-md-3 col-form-label">Priority Order</label>
+                                            <div class="col-md-9">
+                                                <input class="form-control" type="number" name="priority" required value="<?= $priority ?>">
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <!-- <div class="col-lg-12">
+                                        <img class="temp_image"
+                                            src="<?= base_url('upload/category') . '/' . $sub_category_image ?>"
+                                            style=" height: 300px;">
                                         <input type="hidden" value="<?= $sub_category_image ?>" name="temp_image">
-                                    </div>
-                                    <div class="col-lg-12 mt-2">
-                                        <span id="uploadImageError"></span>
-                                    </div>
+                                    </div> -->
+                                    <!--<div class="col-lg-12 mt-2">-->
+                                    <!--    <span id="uploadImageError"></span>-->
+                                    <!--</div>-->
                                 </div>
 
                                 <div class="text-center">
@@ -76,50 +90,3 @@
 </div>
 
 <?php $this->load->view('admin/template/footer'); ?>
-<script>
-    $(document).ready(function() {
-        <?php
-        if ($id == '') {
-        ?>
-            $('.temp_image').hide();
-            $('#save').attr('disabled', true);
-        <?php
-        } else {
-        ?>
-            $('.temp_image').show();
-            $('#save').attr('disabled', false);
-        <?php
-        }
-
-        ?>
-    });
-
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $('.temp_image').attr('src', e.target.result);
-                // $('.user_image').show();
-            };
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-    function sendFile(file) {
-        var ext = file.name.split('.').pop().toLowerCase();
-        if ($.inArray(ext, ['jpg', 'jpeg', 'png']) == -1) {
-            $('#uploadImageError').show().html('<div class="alert alert-danger" role="alert"> <strong>Error!</strong> Only JPG, JPEG and PNG extension allowed.</div>');
-            $('.temp_image').hide();
-            $('#save').attr('disabled', true);
-        } else {
-            $('.temp_image').show();
-            $('#save').removeAttr('disabled');
-        }
-    }
-
-    $(".category_image").change(function() {
-        $('#uploadImageError').hide();
-        readURL(this);
-        sendFile(this.files[0]);
-    });
-</script>

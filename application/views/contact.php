@@ -16,7 +16,7 @@
                     <hr>
                 </div>
                 <div class="contact-form mt-4">
-                    <form class="form" action="" method="POST">
+                    <form class="form" action="" method="POST" enctype="multipart/form-data">
                         <div class="row">
                             <div class="form-group col-lg-6">
                                 <label>Name</label>

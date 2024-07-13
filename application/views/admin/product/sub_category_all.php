@@ -20,8 +20,8 @@
                                         <th>Sr No.</th>
                                         <th>Sub Category Name</th>
                                         <th>Category Name</th>
-                                        <th>Image</th>
-                                        <th style="width: 15%">View Product</th>
+                                        <!--<th>Image</th>-->
+                                        <!-- <th style="width: 15%">View Product</th> -->
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -39,16 +39,16 @@
                                                 <td><?= $i ?></td>
                                                 <td><?= ucwords($item['sub_category_name']) ?> </td>
                                                 <td><?= ucwords($category['category_name']) ?></td>
-                                                <td>
-                                                    <a href="upload/category/<?= $item['sub_category_image'] ?>">
-                                                        <img src="upload/category/<?= $item['sub_category_image'] ?>" width="60" height="40">
-                                                    </a>
-                                                </td>
-                                                <td>
+                                                <!--<td>-->
+                                                <!--    <a href="upload/category/<?= $item['sub_category_image'] ?>">-->
+                                                <!--        <img src="upload/category/<?= $item['sub_category_image'] ?>" width="60" height="40">-->
+                                                <!--    </a>-->
+                                                <!--</td>-->
+                                                <!-- <td>
                                                     <a href="<?php echo base_url("productAll?sCateId=$id"); ?>" class="btn btn-success"><i class="fa fa-eye"></i> View</a>
 
                                                     <span class="badge bg-yellow" style="margin-left: 10px"><?= $getRows; ?></span>
-                                                </td>
+                                                </td> -->
                                                 <td>
                                                     <a href="<?php echo base_url(); ?>subCategoryAdd?id=<?php echo $id; ?>" class="btn btn-success"><i class="fa fa-edit"></i> Edit</a>
                                                     <a onclick="return confirm('Are you want to sure ?')" href="<?= base_url("subCategoryAdd?dID=$id"); ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>

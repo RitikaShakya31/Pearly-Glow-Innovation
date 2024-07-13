@@ -24,16 +24,28 @@ function dateDiffInDays($date1, $date2)
 	// 24 * 60 * 60 = 86400 seconds
 	return abs(round($diff / 86400));
 }
-function setImage($image_nm, $location)
+	function setImage($image_nm, $location)
+	{
+		if ($image_nm != '') {
+			if (file_exists(FCPATH . $location . $image_nm)) {
+				return base_url() . $location . $image_nm;
+			} else {
+				return base_url() . 'assets/img/about.jpg';
+			}
+		} else {
+			return base_url() . 'assets/img/about.jpg';
+		}
+	}
+function setImages($image_nm, $location)
 {
 	if ($image_nm != '') {
 		if (file_exists(FCPATH . $location . $image_nm)) {
 			return base_url() . $location . $image_nm;
 		} else {
-			return base_url() . 'assets/img/about.jpg';
+			return base_url() . 'assets/img/noimage.png';
 		}
 	} else {
-		return base_url() . 'assets/img/about.jpg';
+		return base_url() . 'assets/img/noimage.png';
 	}
 }
 function sessionId($id)
@@ -53,6 +65,10 @@ function insertRow($table, $data)
 	return $ci->db->insert($table, $clean);
 }
 
+function clean($string)
+{
+    return preg_replace('/[^A-Za-z0-9\-]/', ' ', $string);
+}
 function returnId($table, $data)
 {
 	$ci = &get_instance();
@@ -351,11 +367,55 @@ function checkOrderIdExistUser($number)
 }
 
 
+function fileUpload($fileName, $path)
+{
+    $ci = &get_instance();
+    $config['file_name'] = date('dm') . round(microtime(true) * 1000);
+    $config['allowed_types'] = 'jpg|png|jpeg|webp|mp4|avi|mov|wmv';
+    $config['upload_path'] = $path;
+    $config['remove_spaces'] = true;
+    $config['overwrite'] = false;
+    $ci->load->library('upload', $config);
+    $ci->upload->initialize($config);
+
+    if ($ci->upload->do_upload($fileName)) {
+        $data = array('upload_data' => $ci->upload->data());
+        $path = $data['upload_data']['full_path'];
+        $file = $data['upload_data']['file_name'];
+
+        // Check MIME type
+        $mime_type = $data['upload_data']['file_type'];
+
+        // Process images
+        if (strpos($mime_type, 'image') !== false) {
+            $configi['image_library'] = 'gd2';
+            $config['quality'] = '100%';
+            $config['create_thumb'] = FALSE;
+            $configi['source_image'] = $path;
+            $configi['new_image'] = $path; // Save resized image to the same path
+            $configi['maintain_ratio'] = TRUE;
+            $configi['width'] = 600;
+            $configi['height'] = 600;
+
+            $ci->load->library('image_lib', $configi);
+            $ci->image_lib->resize();
+        }
+
+        // Return the file name of the uploaded file
+        return $file;
+    } else {
+        // Return the error message if the upload fails
+        return $ci->upload->display_errors();
+    }
+}
+
+
+
 function imageUpload($imageName, $path)
 {
 	$ci = &get_instance();
 	$config['file_name'] = date('dm') . round(microtime(true) * 1000);
-	$config['allowed_types'] = 'jpg|png|jpeg|WebP|webp';
+	$config['allowed_types'] = 'jpg|png|jpeg|WebP|webp|mp4|avi|mov|wmv';
 	$config['upload_path'] = $path;
 	$target_path = $path;
 	$config['remove_spaces'] = true;
@@ -528,6 +588,39 @@ function sendEmail($host, $username, $password, $fromName, $sendToEmail, $subjec
 	}
 }
 
+function send_email($to, $subject, $message)
+{
+	// Load email library
+	$CI = &get_instance();
+	$CI->load->library('email');
+
+	// Set email config
+	$config['protocol'] = 'smtp'; // You can also use 'mail', 'sendmail', or 'smtp'
+	$config['smtp_host'] = 'md-in-42.webhostbox.net'; // Your SMTP server address
+	$config['smtp_user'] = 'info@pearlyglowinnovations.co.uk'; // Your SMTP username
+	$config['smtp_pass'] = 'QnjXmQDoM%@x'; // Your SMTP password
+	$config['smtp_port'] = 465; // Your SMTP port, typically 587 or 25
+	$config['charset'] = 'utf-8';
+	$config['mailtype'] = 'html'; // Set email format to HTML
+	$config['newline'] = "\r\n";
+
+	$CI->email->initialize($config);
+
+	// Set email parameters
+	$CI->email->from('info@pearlyglowinnovations.co.uk', 'Pearly Glow Innovations');
+	$CI->email->to($to);
+	$CI->email->subject($subject);
+	$CI->email->message($message);
+
+	// Send email
+	if ($CI->email->send()) {
+		return true; // Email sent successfully
+	} else {
+		return false; // Email sending failed
+	}
+}
+
+
 function SMSSend($phone, $msg, $template, $debug = false)
 {
 	global $user, $password, $senderid, $smsurl;
@@ -551,6 +644,8 @@ function SMSSend($phone, $msg, $template, $debug = false)
 	return ($response);
 	// echo $response;
 }
+
+
 
 function mailmsg($to, $subject, $message)
 {
@@ -615,3 +710,4 @@ function jobstatusname($statuss)
 			break;
 	}
 }
+

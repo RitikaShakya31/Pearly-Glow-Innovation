@@ -26,14 +26,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12 mb-3">
+                                    <!-- <div class="col-lg-12 mb-3">
                                         <div class="row">
                                             <label for="example-text-input" class="col-md-3 col-form-label">Gallery Description</label>
                                             <div class="col-md-9">
                                                 <input class="form-control" type="text" name="description" required value="<?= $description ?>">
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="col-lg-12 mb-3">
                                         <div class="row">
                                             <label for="example-text-input" class="col-md-3 col-form-label">Gallery Image</label>

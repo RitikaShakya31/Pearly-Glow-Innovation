@@ -10,14 +10,22 @@ $route['translate_uri_dashes'] = FALSE;
 $route['gallery'] = 'Home/gallery';
 $route['precisionpro'] = 'Home/precisionpro';
 $route['product'] = 'Home/product';
+$route['precisionpro/(:any)'] = 'Home/precisionpro/$1';
+$route['product/(:any)'] = 'Home/product/$1';
+$route['precisionpro/(:any)/(:any)'] = 'Home/precisionpro/$1/$2';
+$route['product/(:any)/(:any)'] = 'Home/product/$1/$2';
 $route['contact'] = 'Home/contact';
 $route['about'] = 'Home/about';
 $route['checkout'] = 'Home/checkout';
 $route['catalog'] = 'Home/catalog';
-$route['product-details'] = 'Home/product_details';
+$route['brochures'] = 'Home/brochures';
+$route['video-gallery'] = 'Home/video_gallery';
+$route['product-details/(:any)'] = 'Home/product_details/$1';
 $route['sign-up'] = 'Home/sign_up';
 $route['policies'] = 'Home/policies';
 $route['login'] = 'Home/login';
+$route['thank_you'] = 'Home/thank_you';
+$route['logout'] = 'Home/logout';
 
 
 /////////////////////     Admin     /////////////////
@@ -26,11 +34,13 @@ $route['admin'] = 'admin/AdminAuth/admin';
 $route['adminLogout'] = 'admin/AdminAuth/adminLogout';
 
 $route['dashboard'] = 'admin/AdminHome/dashboard';
-$route['banner'] = 'admin/AdminHome/banner';
 $route['gallery_list'] = 'admin/AdminHome/gallery';
+$route['video_list'] = 'admin/AdminHome/video_list';
 $route['setting'] = 'admin/AdminHome/setting';
 $route['testimonial-list'] = 'admin/AdminHome/testimonial_list';
 $route['blog-list'] = 'admin/AdminHome/blog_list';
+$route['banner-list'] = 'admin/AdminHome/banner';
+$route['event-list'] = 'admin/AdminHome/event_list';
 $route['promoCode'] = 'admin/AdminHome/promoCode';
 $route['category-featured/(:any)/(:any)'] = 'admin/AdminHome/categoryFeatured/$1/$2';
 $route['setDeliveryCharges'] = 'admin/AdminHome/setDeliveryCharges';
@@ -57,10 +67,19 @@ $route['contact_query'] = 'admin/AdminHome/contact_query';
 
 // => Product
 
+$route['addToCart'] = 'Home/addToCart';
+$route['fetch_totalitems'] = 'Home/fetch_totalitems';
+$route['fetch_totalamount'] = 'Home/fetch_totalamount';
+
 $route['categoryAll'] = 'admin/AdminProduct/categoryAll';
+$route['delete_item'] = 'admin/AdminProduct/delete_item';
+
 $route['categoryAdd'] = 'admin/AdminProduct/categoryAdd';
 $route['galleryAdd'] = 'admin/AdminProduct/galleryAdd';
+$route['videoAdd'] = 'admin/AdminProduct/videoAdd';
 $route['blogAdd'] = 'admin/AdminProduct/blogAdd';
+$route['eventAdd'] = 'admin/AdminProduct/eventAdd';
+$route['bannerAdd'] = 'admin/AdminProduct/bannerAdd';
 $route['testimonialAdd'] = 'admin/AdminProduct/testimonialAdd';
 $route['subCategoryAll'] = 'admin/AdminProduct/subCategoryAll';
 $route['subCategoryAdd'] = 'admin/AdminProduct/subCategoryAdd';

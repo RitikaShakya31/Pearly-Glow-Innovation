@@ -20,30 +20,30 @@
 			</div>
 			<div class="contact-form mt-4">
 
-				<form class="form" name="enq" method="POST" action="">
+				<form class="form" method="POST" action="">
 					<div class="row">
 						<div class="form-group col-lg-12">
 							<label>Name</label>
 							<span class="form-icon"><i class="icofont icofont-user-alt-5"></i></span>
-							<input name="name" class="form-control form-controlb" id="cname" required="required"
+							<input name="name" class="form-control form-controlb" required="required"
 								placeholder="Enter Your Name" type="text">
 						</div>
 						<div class="form-group col-lg-12">
 							<label>Email</label>
 							<span class="form-icon"><i class="icofont icofont-envelope"></i></span>
-							<input name="email" class="form-control form-controlb" id="cmail" required="required"
+							<input name="email_id" class="form-control form-controlb" required="required"
 								placeholder="Enter Your Email" type="email">
 						</div>
 						<div class="form-group col-lg-12">
 							<label>Number</label>
 							<span class="form-icon"><i class="icofont icofont-telephone"></i></span>
-							<input name="phone" class="form-control form-controlb" id="cnumber" required="required"
+							<input name="contact_no" class="form-control form-controlb"  required="required"
 								placeholder="Enter Your Phone Number" type="text">
 						</div>
 						<div class="form-group col-lg-12">
 							<label>Password</label>
 							<span class="form-icon"><i class="icofont icofont-ui-email"></i></span>
-							<input name="subject" class="form-control form-controlb" id="csubject" required="required"
+							<input name="password" class="form-control form-controlb"  required="required"
 								placeholder="Enter Your Password" type="text">
 						</div>
 						<a href="<?= base_url('login') ?>">
@@ -51,8 +51,8 @@
 						</a>
 						<div class="form-group col-lg-12 mb0">
 							<div class="actions">
-								<input value="Submit" name="submit" id="submitButton" class="btn btn-lg btn-contact-bg"
-									title="Click here to submit your message!" type="submit">
+								<input value="Submit" type="submit" id="submitButton" class="btn btn-lg btn-contact-bg"
+									title="Click here to submit your message!">
 							</div>
 						</div>
 					</div>

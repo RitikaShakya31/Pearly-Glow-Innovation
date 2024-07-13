@@ -21,6 +21,7 @@ class AdminProduct extends CI_Controller
 		$get['title'] = 'Admin | All Category';
 		$this->load->view('admin/product/category_all', $get);
 	}
+	
 
 	public function categoryAdd()
 	{
@@ -30,6 +31,7 @@ class AdminProduct extends CI_Controller
 		$decrypt_id = decryptId($this->input->get('id'));
 		$get = $this->CommonModal->getSingleRowById('category', "category_id = '$decrypt_id'");
 		$data['category_name'] = set_value('category_name') == false ? @$get['category_name'] : set_value('category_name');
+		$data['priority'] = set_value('priority') == false ? @$get['priority'] : set_value('priority');
 		$data['image'] = set_value('image') == false ? @$get['image'] : set_value('image');
 		if (isset($id)) {
 			$data['title'] = 'Edit Category';
@@ -47,21 +49,107 @@ class AdminProduct extends CI_Controller
 			$this->form_validation->set_rules('category_name', 'category name', 'required');
 			if ($this->form_validation->run()) {
 				$post['category_name'] = trim($category_name);
+				$post['priority'] = trim($priority);
 				if (!empty($_FILES['image']['name'])) {
 					$picture = imageUploadWithRatio('image', CATEGORY_IMAGE, 600, 400, $data['image']);
 					$post['image'] = $picture; 
 				}
 				if (isset($id)) {
 					$update = $this->CommonModal->updateRowById('category', 'category_id', $decrypt_id, $post);
-					flashData('errors', 'Category Update Successfully');
+					// flashData('errors', 'Category Update Successfully');
+					flashMultiData(['success_status' => "success", 'msg' => "Category Update Successfully"]);
 				} else {
 					$insert = $this->CommonModal->insertRow('category', $post);
-					flashData('errors', 'Category Add Successfully');
+					// flashData('errors', 'Category Add Successfully');
+					flashMultiData(['success_status' => "success", 'msg' => "Category Add Successfully"]);
+
+					
 				}
 				redirect('categoryAll');
 			}
 		}
 		$this->load->view('admin/product/category_add', $data);
+	}
+	public function videoAdd()
+	{
+		extract($this->input->post());
+		$id = $this->input->get('id');
+		$decrypt_id = decryptId($this->input->get('id'));
+		$get = $this->CommonModal->getSingleRowById('tbl_video_gallery', "id = '$decrypt_id'");
+		$data['video'] = set_value('video') == false ? @$get['video'] : set_value('video');
+		$data['title'] = set_value('title') == false ? @$get['title'] : set_value('title');
+		if (isset($id)) {
+			$data['gtitle'] = 'Edit Video Gallery';
+		} else {
+			$data['gtitle'] = 'Add Video Gallery';
+		}
+		if (count($_POST) > 0) {
+			$post = $this->input->post();
+			if (!empty($_FILES['video']['name'])) {
+				$uploadedFileName = fileUpload('video', 'upload/video');
+				if ($uploadedFileName) {
+					$post['video'] = $uploadedFileName;
+				} else {
+					flashData('errors', 'Video upload failed.');
+				}
+			}
+			if (isset($id)) {
+				$insertData = $this->CommonModal->updateRowById('tbl_video_gallery', 'id', $decrypt_id, $post);
+				flashData('errors', 'Video Gallery Updated Successfully');
+			} else {
+				$insertData = $this->CommonModal->insertRow('tbl_video_gallery', $post);
+				flashData('errors', 'Video Gallery Added Successfully');
+			}
+			if ($insertData) {
+				flashMultiData(['success_status' => "success", 'msg' => "Video Gallery added"]);
+			} else {
+				flashMultiData(['success_status' => "error", 'msg' => "Something went wrong."]);
+			}
+			redirect('video_list');
+			exit();
+		}
+		
+		$data['gtitle'] = "Add Video Gallery";
+		$this->load->view('admin/video_add', $data);
+	}
+	public function bannerAdd()
+	{
+		extract($this->input->post());
+		$id = $this->input->get('id');
+		$decrypt_id = decryptId($this->input->get('id'));
+		$get = $this->CommonModal->getSingleRowById('banner', "banner_id  = '$decrypt_id'");
+		$data['title'] = set_value('title') == false ? @$get['title'] : set_value('title');
+		$data['priority'] = set_value('priority') == false ? @$get['priority'] : set_value('priority');
+		$data['image_path'] = set_value('image_path') == false ? @$get['image_path'] : set_value('image_path');
+		if (isset($id)) {
+			$data['gtitle'] = 'Edit Banner';
+		} else {
+			$data['gtitle'] = 'Add Banner';
+		}
+
+		if (count($_POST) > 0) {
+			$post = $this->input->post();
+			if (!empty($_FILES['image_path']['name'])) {
+                $post['image_path'] = imageUpload('image_path', 'upload/banner/');
+            }
+		
+			if (isset($id)) {
+				$insertData = $this->CommonModal->updateRowById('banner', 'banner_id ', $decrypt_id, $post);
+				flashData('errors', 'Banner Update Successfully');
+			} else {
+				$insertData = $this->CommonModal->insertRow('banner', $post);
+				flashData('errors', 'Banner Add Successfully');
+			}
+			if ($insertData) {
+				flashMultiData(['success_status' => "success", 'msg' => "Banner added"]);
+			} else {
+				flashMultiData(['success_status' => "error", 'msg' => "Something went wrong."]);
+			}
+			redirect('banner-list');
+			exit();
+		}
+		$data['gtitle'] = "Add Banner";
+		$this->load->view('admin/banner_add', $data);
 	}
 	public function galleryAdd()
 	{
@@ -158,8 +246,6 @@ class AdminProduct extends CI_Controller
 		}
 		if (count($_POST) > 0) {
 			$post = $this->input->post();
-			// $post['image'] = imageUpload('image', 'upload/blog/');
-			// $insertData = $this->CommonModal->insertRow('blog', $post);
 			if (!empty($_FILES['image']['name'])) {
                 $post['image'] = imageUpload('image', 'upload/blog/');
             }
@@ -179,6 +265,43 @@ class AdminProduct extends CI_Controller
 		$data['gtitle'] = "Add Blog";
 		$this->load->view('admin/blog_add', $data);
 	}
+	public function eventAdd()
+	{
+		extract($this->input->post());
+		$id = $this->input->get('id');
+		$decrypt_id = decryptId($this->input->get('id'));
+		$get = $this->CommonModal->getSingleRowById('event', "id = '$decrypt_id'");
+		$data['title'] = set_value('title') == false ? @$get['title'] : set_value('title');
+		$data['description'] = set_value('description') == false ? @$get['description'] : set_value('description');
+		$data['image'] = set_value('image') == false ? @$get['image'] : set_value('image');
+		if (isset($id)) {
+			$data['gtitle'] = 'Edit Event';
+		} else {
+			$data['gtitle'] = 'Add Event';
+		}
+		if (count($_POST) > 0) {
+			$post = $this->input->post();
+			// $post['image'] = imageUpload('image', 'upload/blog/');
+			// $insertData = $this->CommonModal->insertRow('blog', $post);
+			if (!empty($_FILES['image']['name'])) {
+                $post['image'] = imageUpload('image', 'upload/event/');
+            }
+			if (isset($id)) {
+				$insertData = $this->CommonModal->updateRowById('event', 'id', $decrypt_id, $post);
+			} else {
+				$insertData = $this->CommonModal->insertRow('event', $post);
+			}
+			if ($insertData) {
+				flashMultiData(['success_status' => "success", 'msg' => "Event added"]);
+			} else {
+				flashMultiData(['success_status' => "error", 'msg' => "Something went wrong."]);
+			}
+			redirect('event-list');
+			exit();
+		}
+		$data['gtitle'] = "Add Event";
+		$this->load->view('admin/event_add', $data);
+	}
 
 	//   sub category
 
@@ -197,9 +320,10 @@ class AdminProduct extends CI_Controller
 		$decrypt_id = decryptId($this->input->get('id'));
 
 		$get = $this->CommonModal->getSingleRowById('tbl_sub_category', "sub_category_id = '$decrypt_id'");
+// 		$data['priority'] = set_value('priority') == false ? @$get['priority'] : set_value('priority');
 		$data['sub_category_name'] = set_value('sub_category_name') == false ? @$get['sub_category_name'] : set_value('sub_category_name');
 		$data['category_id'] = set_value('category_id') == false ? @$get['category_id'] : set_value('category_id');
-		$data['sub_category_image'] = set_value('category_image2') == false ? @$get['sub_category_image'] : set_value('category_image2');
+		// $data['sub_category_image'] = set_value('sub_category_image') == false ? @$get['sub_category_image'] : set_value('sub_category_image');
 		if (isset($id)) {
 			$data['title'] = 'Edit Sub Category';
 		} else {
@@ -214,16 +338,18 @@ class AdminProduct extends CI_Controller
 
 		if (count($_POST) > 0) {
 			$this->form_validation->set_rules('sub_category_name', 'sub category name', 'trim|required');
+// 			$this->form_validation->set_rules('priority', 'sub category priority', 'trim|required');
 			$this->form_validation->set_rules('category_id', 'category', 'required');
 			if ($this->form_validation->run()) {
 
 				$post['sub_category_name'] = $sub_category_name;
+				// $post['priority'] = $priority;
 				$post['category_id'] = $category_id;
 
-				if (!empty($_FILES['sub_category_image']['name'])) {
-					$picture = imageUploadWithRatio('sub_category_image', CATEGORY_IMAGE, 600, 400, $data['sub_category_image']);
-					$post['sub_category_image'] = $picture;
-				}
+				// if (!empty($_FILES['sub_category_image']['name'])) {
+				// 	$picture = imageUploadWithRatio('sub_category_image', CATEGORY_IMAGE, 600, 400, $data['sub_category_image']);
+				// 	$post['sub_category_image'] = $picture;
+				// }
 
 				if (isset($id)) {
 					$update = $this->CommonModal->updateRowById('tbl_sub_category', 'sub_category_id', $decrypt_id, $post);
@@ -301,6 +427,7 @@ class AdminProduct extends CI_Controller
 		$data['sale_price'] = set_value('sale_price') == false ? @$getProduct['sale_price'] : set_value('sale_price');
 		$data['quantity'] = set_value('quantity') == false ? @$getProduct['quantity'] : set_value('quantity');
 		$data['quantity_type'] = set_value('quantity_type') == false ? @$getProduct['quantity_type'] : set_value('quantity_type');
+		$data['article_num'] = set_value('article_num') == false ? @$getProduct['article_num'] : set_value('article_num');
 		$data['image_all'] = $this->CommonModal->getRowById('product_image', "product_id", $decrypt_id);
 
 
@@ -315,6 +442,7 @@ class AdminProduct extends CI_Controller
 			$post['sale_price'] = $sale_price;
 			$post['quantity'] = $quantity;
 			$post['quantity_type'] = $quantity_type;
+			$post['article_num'] = $article_num;
 
 
 			if (isset($id)) {
@@ -399,4 +527,18 @@ class AdminProduct extends CI_Controller
 		$data['title'] = 'Product Details';
 		$this->load->view('admin/product/view_product_details', $data);
 	}
+	
+
+	public function delete_item()
+    {
+        $product_id = $this->input->post('pid');
+        $data = array(
+            'rowid' => $product_id,
+            'qty'   => 0
+        );
+        $this->cart->update($data);
+    }
+
+
+
 }

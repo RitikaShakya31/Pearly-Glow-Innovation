@@ -107,7 +107,7 @@
                                     <div class="card-body">
                                         <div class="media">
                                             <div class="media-body">
-                                                <p class="text-muted fw-medium">Total Sub Product</p>
+                                                <p class="text-muted fw-medium">Total Products</p>
                                                 <h4 class="mb-0"><?= $total_product ?></h4>
                                             </div>
                                             <div class="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
@@ -122,7 +122,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <!-- <h4>Orders</h4>
+                        <h4>Orders</h4>
                         <div class="col-md-4">
                             <a href="<?= base_url('recentOrders') ?>">
                                 <div class="card mini-stats-wid">
@@ -142,8 +142,8 @@
                                     </div>
                                 </div>
                             </a>
-                        </div> -->
-                        <!-- <div class="col-md-4">
+                        </div>
+                        <div class="col-md-4">
                             <a href="<?= base_url('acceptedOrders') ?>">
                                 <div class="card mini-stats-wid">
                                     <div class="card-body">
@@ -162,8 +162,8 @@
                                     </div>
                                 </div>
                             </a>
-                        </div> -->
-                        <!-- <div class="col-md-4">
+                        </div>
+                        <div class="col-md-4">
                             <a href="<?= base_url('dispatchOrders') ?>">
                                 <div class="card mini-stats-wid">
                                     <div class="card-body">
@@ -181,10 +181,10 @@
                                     </div>
                                 </div>
                             </a>
-                        </div> -->
+                        </div>
                     </div>
                     <div class="row">
-                        <!-- <div class="col-md-4">
+                        <div class="col-md-4">
                             <a href="<?= base_url('completedOrders') ?>">
                                 <div class="card mini-stats-wid">
                                     <div class="card-body">
@@ -202,8 +202,8 @@
                                     </div>
                                 </div>
                             </a>
-                        </div> -->
-                        <!-- <div class="col-md-4">
+                        </div>
+                        <div class="col-md-4">
                             <a href="<?= base_url('cancelOrders') ?>">
                                 <div class="card mini-stats-wid">
                                     <div class="card-body">
@@ -221,7 +221,7 @@
                                     </div>
                                 </div>
                             </a>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
             </div>

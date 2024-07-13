@@ -21,7 +21,7 @@
                                         <th>Sr no.</th>
                                         <th>Title</th>
                                         <th>Image</th>
-                                        <th>Description</th>
+                                        <!-- <th>Description</th> -->
                                         <th style="width: 20%">Action</th>
                                     </tr>
                                 </thead>
@@ -42,8 +42,7 @@
                                                             style="width: 60px; height: 50px">
                                                     </a>
                                                 </td>
-                                                <td><?= $all['description'] ?></td>
-
+                                                <!-- <td><?= $all['description'] ?></td> -->
                                                 <td>
                                                     <a href="<?= base_url("galleryAdd?id=$id"); ?>" class="btn btn-success"><i
                                                             class="fa fa-edit"></i> Edit</a>

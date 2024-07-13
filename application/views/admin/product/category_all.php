@@ -21,7 +21,7 @@
                                         <th>Category Name</th>
                                         <th>Image</th>
                                         <th>Total Sub Category</th>
-                                        <th>Featured</th>
+                                        <!-- <th>Featured</th> -->
                                         <th style="width: 20%">Edit</th>
                                     </tr>
                                 </thead>
@@ -44,9 +44,9 @@
                                                 <td>
                                                     <span class="badge rounded-pill bg-warning" style="font-size: 18px;"><?= $getTotalSubCate; ?></span>
                                                 </td>
-                                                <td>
+                                                <!-- <td>
                                                     <a href="<?= base_url("category-featured/$id/" . (($all['featured'] == '0')? 1 : 0)) ?>/" class="badge rounded-pill bg-<?= (($all['featured'] == '0')? 'light' : 'danger') ?>" style="font-size: 18px;"><?= (($all['featured'] == '0')? 'No' : 'Yes') ?></a>
-                                                </td>
+                                                </td> -->
                                                 <td>
                                                     <a href="<?= base_url("categoryAdd?id=$id"); ?>" class="btn btn-success"><i class="fa fa-edit"></i> Edit</a>
                                                     <!-- <a onclick="return confirm('Are you want to sure ?')" href="<?= base_url("categoryAdd?dID=$id"); ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a> -->

@@ -565,4 +565,5 @@ class CI_Cart {
 		$this->CI->session->unset_userdata('cart_contents');
 	}
 
+
 }

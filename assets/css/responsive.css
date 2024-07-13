@@ -60,6 +60,7 @@ Version      : 1.0
 .sticky-wrapper {
 	height: 0 !important;
 }
+
 .sticky-menu {
 	position: relative !important;
 }
@@ -88,6 +89,8 @@ Version      : 1.0
 .single-testimonial-img {
 	margin-right: 20px;
 }
+
+
 .single-testimonial-text-warp {
 	width: 63%;
 }
@@ -101,6 +104,7 @@ Version      : 1.0
 	max-width: 100%;
 	height: auto;
 }
+
 .appointment-section h4 {
 	font-size: 17px;
 }
@@ -310,6 +314,8 @@ Version      : 1.0
 
 .single-doctor img, .single-doctor-info {
 	width: 100%;
+	height: 259px;
+	object-fit: cover;
 }
 .single-doc-tab .nav-tabs .nav-item {
 	margin-bottom: 20px;
@@ -325,6 +331,17 @@ Version      : 1.0
 }
 .servide-list ul li a {
 	font-size: 15px;
+}
+
+
+.single-doctor button{
+	background: #1498d8;
+    padding: 6px 11px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    margin-top: 12px;
 }
 .portfolio-filter-menu ul li {
 	width: 100%;
